@@ -1,175 +1,1236 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#be123c">
 <title>Nuestra historia ❤️</title>
-<meta name="description" content="Nuestra historia, nuestros recuerdos y todo el tiempo que llevamos juntos.">
+
 <style>
-:root{--rose:#e88da8;--soft:#fff5f7;--ink:#3f2931;--muted:#806d73}
 *{box-sizing:border-box}
-body{margin:0;background:#fffafb;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-main{width:min(736px,100%);margin:auto;padding:22px 16px 36px}
-.hero{background:linear-gradient(135deg,#fff7f9,#fff0f4);border:1px solid #f4d7df;border-radius:28px;padding:30px 22px;text-align:center}
-.heart{font-size:38px}.hero h1{font-size:clamp(28px,7vw,42px);line-height:1.1;margin:0;font-weight:750}
-.subtitle{color:var(--muted);margin-top:8px}
-.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px}
-.unit{background:#fff;border:1px solid #f1dfe4;border-radius:16px;padding:14px 6px}
-.num{font-size:clamp(22px,6vw,32px);font-weight:750;color:var(--rose)}
-.label{font-size:12px;color:var(--muted);margin-top:3px}
-.card{background:var(--soft);border:1px solid #f1dfe4;border-radius:24px;padding:22px;margin-top:20px}
-.section-title{font-size:20px;font-weight:700;margin-bottom:10px}
-.message{color:#5e4a51;line-height:1.75;font-size:15px}
-.months{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.month{border:1px solid #efdde3;background:#fff;border-radius:17px;padding:14px;text-align:left;color:var(--ink);cursor:pointer;min-height:58px}
-.month strong{display:block}.month span{font-size:12px;color:var(--muted)}
-.month.active{border-color:var(--rose);background:#fff7f9}
-.memory{margin-top:16px;background:#fff;border-radius:18px;border:1px dashed #e6cbd3;padding:18px}
-textarea{width:100%;min-height:100px;border:1px solid #ead9de;border-radius:12px;padding:12px;resize:vertical;font:inherit;font-size:16px;outline:none}
-textarea:focus{border-color:var(--rose)}
-.photo-label{display:flex;align-items:center;justify-content:center;border:1px dashed #e0bcc7;border-radius:14px;padding:14px;cursor:pointer;color:#765c64;background:#fffafd;margin-top:12px}
-.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.preview img{width:100%;aspect-ratio:1;border-radius:12px;object-fit:cover}
-.save{margin-top:10px;border:0;border-radius:13px;background:var(--rose);color:#fff;padding:12px 18px;font-weight:700;cursor:pointer}
-.save:active{transform:scale(.98)}
-.saved{margin-top:12px;color:#765c64;font-size:13px}
-.footer{text-align:center;color:#9b7f88;font-size:13px;padding:20px 4px 4px}
-@media(max-width:430px){.counter{grid-template-columns:repeat(2,1fr)}.months{grid-template-columns:1fr}}
+html{scroll-behavior:smooth}
+
+body{
+ margin:0;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+ color:#1f2937;
+ background:linear-gradient(135deg,#fff1f2,#fdf2f8,#eef2ff);
+}
+
+button,input,select{font:inherit}
+
+#gate{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:24px;
+ background:
+ radial-gradient(circle at 20% 20%,#fb718544,transparent 30%),
+ radial-gradient(circle at 80% 80%,#a78bfa44,transparent 30%),
+ #fff7fb;
+}
+
+.gate-card{
+ width:min(430px,100%);
+ background:#fffffff2;
+ backdrop-filter:blur(14px);
+ border-radius:28px;
+ padding:34px 26px;
+ text-align:center;
+ box-shadow:0 20px 60px #1f293726;
+ animation:rise .8s ease both;
+}
+
+.logo{
+ font-size:64px;
+ animation:beat 1.5s infinite;
+}
+
+.gate-card h1{margin:8px 0}
+.gate-card p{color:#6b7280}
+
+.gate-card input{
+ width:100%;
+ padding:14px;
+ border:1px solid #e5e7eb;
+ border-radius:14px;
+ text-align:center;
+ letter-spacing:2px;
+ outline:0;
+}
+
+.primary{
+ width:100%;
+ border:0;
+ border-radius:14px;
+ padding:14px;
+ margin-top:12px;
+ color:white;
+ background:linear-gradient(135deg,#fb7185,#ec4899);
+ font-weight:700;
+ cursor:pointer;
+}
+
+.error{
+ color:#dc2626!important;
+ min-height:22px;
+}
+
+header{
+ min-height:400px;
+ padding:70px 20px 50px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ position:relative;
+ overflow:hidden;
+ color:white;
+ background:linear-gradient(135deg,#be123c,#ec4899 50%,#7c3aed);
+}
+
+.hero{
+ position:relative;
+ z-index:2;
+ animation:rise 1s ease both;
+}
+
+.hero h1{
+ font-size:clamp(42px,9vw,82px);
+ line-height:1;
+ margin:0 0 12px;
+}
+
+.hero p{
+ font-size:clamp(18px,4vw,25px);
+ max-width:800px;
+ margin:auto;
+}
+
+.hearts span{
+ position:absolute;
+ font-size:22px;
+ bottom:-40px;
+ opacity:.65;
+ animation:float 7s linear infinite;
+}
+
+.hearts span:nth-child(1){left:8%}
+.hearts span:nth-child(2){left:25%;animation-delay:1.5s}
+.hearts span:nth-child(3){left:48%;animation-delay:3s}
+.hearts span:nth-child(4){left:70%;animation-delay:4.5s}
+.hearts span:nth-child(5){left:88%;animation-delay:2s}
+
+main{
+ width:min(1050px,92%);
+ margin:auto;
+ padding:38px 0 70px;
+}
+
+.card{
+ background:#ffffffe8;
+ border:1px solid #ffffffcc;
+ border-radius:24px;
+ padding:26px;
+ margin:22px 0;
+ box-shadow:0 12px 35px #1f293714;
+}
+
+.counter{text-align:center}
+.counter h2{margin-top:0}
+
+.count-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.count-box{
+ background:linear-gradient(135deg,#fff1f2,#fce7f3);
+ border-radius:18px;
+ padding:18px 8px;
+}
+
+.count-number{
+ font-size:clamp(28px,7vw,46px);
+ font-weight:800;
+ color:#be123c;
+}
+
+.count-label{
+ font-size:13px;
+ color:#6b7280;
+}
+
+.message{
+ text-align:center;
+ line-height:1.8;
+ font-size:17px;
+ color:#4b5563;
+}
+
+.message strong{color:#be123c}
+
+.section-title{
+ text-align:center;
+ margin:42px 0 18px;
+}
+
+.section-title h2{
+ margin:0 0 5px;
+ font-size:30px;
+}
+
+.section-title p{
+ margin:0;
+ color:#6b7280;
+}
+
+.months{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+}
+
+.month-btn{
+ border:1px solid #fbcfe8;
+ background:white;
+ border-radius:18px;
+ padding:18px;
+ cursor:pointer;
+ text-align:left;
+ transition:.2s;
+ box-shadow:0 7px 18px #1f29350d;
+}
+
+.month-btn:hover{
+ transform:translateY(-3px);
+}
+
+.month-btn strong{
+ display:block;
+ color:#be123c;
+ margin-bottom:4px;
+}
+
+.month-btn span{
+ font-size:13px;
+ color:#6b7280;
+}
+
+.month-panel{
+ display:none;
+ animation:rise .45s ease both;
+}
+
+.month-panel.active{
+ display:block;
+}
+
+.back{
+ border:0;
+ background:#fce7f3;
+ color:#9d174d;
+ border-radius:12px;
+ padding:10px 14px;
+ cursor:pointer;
+ margin-bottom:15px;
+}
+
+.month-panel h2{
+ margin:0;
+ color:#9d174d;
+}
+
+.hint{
+ color:#6b7280;
+}
+
+.photo-controls,
+.music-list{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ align-items:center;
+ margin:18px 0;
+}
+
+.file-label,
+.save-btn{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ border:0;
+ border-radius:12px;
+ padding:11px 15px;
+ cursor:pointer;
+ font-weight:700;
+}
+
+.file-label{
+ background:#fce7f3;
+ color:#9d174d;
+}
+
+.save-btn{
+ background:#be123c;
+ color:white;
+}
+
+input[type=file]{
+ display:none;
+}
+
+.collage{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+
+.photo{
+ width:100%;
+ aspect-ratio:1;
+ object-fit:cover;
+ border-radius:16px;
+ box-shadow:0 8px 18px #0002;
+ animation:photoIn .5s ease both;
+}
+
+.photo:nth-child(2n){
+ transform:rotate(1.2deg);
+}
+
+.photo:nth-child(3n){
+ transform:rotate(-1.2deg);
+}
+
+.empty{
+ grid-column:1/-1;
+ text-align:center;
+ color:#9ca3af;
+ padding:30px 10px;
+ border:2px dashed #e5e7eb;
+ border-radius:16px;
+}
+
+.music-list select{
+ flex:1;
+ min-width:200px;
+ padding:11px;
+ border:1px solid #e5e7eb;
+ border-radius:12px;
+ background:white;
+}
+
+.music-list audio{
+ width:100%;
+ margin-top:8px;
+}
+
+.privacy-note{
+ font-size:12px;
+ line-height:1.5;
+ color:#6b7280;
+}
+
+footer{
+ text-align:center;
+ color:#6b7280;
+ padding:25px;
+}
+
+@keyframes rise{
+ from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:none}
+}
+
+@keyframes beat{
+ 0%,100%{transform:scale(1)}
+ 15%{transform:scale(1.12)}
+ 30%{transform:scale(1)}
+}
+
+@keyframes float{
+ 0%{transform:translateY(0);opacity:0}
+ 15%{opacity:.65}
+ 100%{transform:translateY(-480px) rotate(25deg);opacity:0}
+}
+
+@keyframes photoIn{
+ from{opacity:0;transform:scale(.85)}
+ to{opacity:1}
+}
+
+@media(max-width:700px){
+ .months{grid-template-columns:repeat(2,1fr)}
+ .card{padding:20px}
+}
+
+@media(max-width:430px){
+ .months{grid-template-columns:1fr}
+ .collage{grid-template-columns:repeat(2,1fr)}
+ header{min-height:360px}
+}
 </style>
 </head>
+
 <body>
-<main id="app">
-<section class="hero">
-<div class="heart">♡</div>
+
+<section id="gate">
+<div class="gate-card">
+
+<div class="logo">❤️</div>
+
 <h1>Nuestra historia</h1>
-<div class="subtitle">Desde aquel 5 de septiembre, cada momento cuenta.</div>
-<div class="counter" aria-live="polite">
-<div class="unit"><div id="years" class="num">0</div><div class="label">años</div></div>
-<div class="unit"><div id="months" class="num">0</div><div class="label">meses</div></div>
-<div class="unit"><div id="days" class="num">0</div><div class="label">días</div></div>
-<div class="unit"><div id="hours" class="num">0</div><div class="label">horas</div></div>
+
+<p>Introduce la contraseña para entrar.</p>
+
+<form id="loginForm">
+
+<input
+ id="password"
+ type="password"
+ inputmode="numeric"
+ autocomplete="off"
+ placeholder="Contraseña">
+
+<button class="primary" type="submit">
+Entrar
+</button>
+
+</form>
+
+<p id="loginError" class="error"></p>
+
 </div>
-<div id="since" class="subtitle" style="font-size:12px;margin-top:14px"></div>
 </section>
+
+
+<div id="app">
+
+<header>
+
+<div class="hearts" aria-hidden="true">
+<span>❤️</span>
+<span>💗</span>
+<span>💕</span>
+<span>❤️</span>
+<span>💖</span>
+</div>
+
+<div class="hero">
+
+<h1>Nuestra historia ❤️</h1>
+
+<p>
+Un pequeño espacio para guardar nuestros recuerdos
+y todo lo bonito que vamos construyendo.
+</p>
+
+</div>
+</header>
+
+
+<main>
+
+
+<section class="card counter">
+
+<h2>Tiempo juntos</h2>
+
+<div class="count-grid">
+
+<div class="count-box">
+<div id="years" class="count-number">0</div>
+<div class="count-label">AÑOS</div>
+</div>
+
+<div class="count-box">
+<div id="months" class="count-number">0</div>
+<div class="count-label">MESES</div>
+</div>
+
+<div class="count-box">
+<div id="days" class="count-number">0</div>
+<div class="count-label">DÍAS</div>
+</div>
+
+</div>
+</section>
+
+
+<section class="card message">
+
+<p>
+Quiero que esto sea <strong>un comienzo</strong> de muchos recuerdos,
+momentos, aprendizajes y sonrisas.
+Que podamos acompañarnos en los días buenos y también en los difíciles,
+cuidando siempre lo que estamos construyendo.
+</p>
+
+<p>
+Aquí iremos guardando pequeños pedacitos de nuestra historia
+para poder volver a ellos y recordar todo lo que hemos vivido juntos. ❤️
+</p>
+
+</section>
+
+
+<div id="monthsView">
+
+<div class="section-title">
+
+<h2>Nuestros recuerdos</h2>
+
+<p>
+Elige un mes para guardar y ver sus fotos.
+</p>
+
+</div>
+
 
 <section class="card">
-<div class="section-title">Para nosotros</div>
-<div class="message">
-Quiero que lo nuestro sea de esas historias que no terminan cuando llegan los primeros problemas, sino que aprenden a crecer con ellos.
-Sé que tendremos días increíbles y también días difíciles, pero quiero que siempre podamos elegirnos, escucharnos y salir adelante juntos.
-Quiero construir contigo algo que dure, cuidar cada pequeño momento y llenar nuestra historia de recuerdos.
-<strong>Ojalá este primer mes sea solamente el comienzo de toda una vida de momentos juntos.</strong> ♡
-</div>
+
+<div class="months" id="monthButtons"></div>
+
 </section>
+
+</div>
+
+
+<section id="monthPanel" class="card month-panel">
+
+<button class="back" id="backBtn">
+← Volver a los meses
+</button>
+
+<h2 id="selectedMonthTitle"></h2>
+
+<p class="hint">
+Puedes seleccionar hasta 9 fotos y crear tu propio collage.
+</p>
+
+
+<div class="photo-controls">
+
+<label class="file-label">
+
+📷 Elegir fotos
+
+<input
+ id="photoInput"
+ type="file"
+ accept="image/*"
+ multiple>
+
+</label>
+
+
+<button class="save-btn" id="savePhotos">
+Guardar fotos
+</button>
+
+</div>
+
+
+<div id="collage" class="collage"></div>
+
+<p class="privacy-note">
+Las fotos se guardan localmente en este navegador.
+No se suben a GitHub.
+</p>
+
+</section>
+
 
 <section class="card">
-<div class="section-title">Nuestros meses</div>
-<div class="months" id="month-list"></div>
 
-<div class="memory">
-<div id="selected-month" class="section-title" style="font-size:17px">Nuestro primer mes</div>
-<p style="color:#806d73;font-size:13px">Guarda aquí una pequeña historia y las fotos que quieras recordar.</p>
-<textarea id="memory-text" placeholder="Escribe aquí qué hizo especial este mes..."></textarea>
+<div class="section-title" style="margin:0 0 18px">
 
-<label class="photo-label" for="photos">＋ Agregar fotos de este mes</label>
-<input id="photos" type="file" accept="image/*" multiple hidden>
-<div id="preview" class="preview"></div>
+<h2>🎵 Nuestra música</h2>
 
-<button id="save" class="save" type="button">Guardar recuerdo</button>
-<div id="saved" class="saved"></div>
+<p>
+Puedes elegir entre varios archivos de música desde este dispositivo.
+</p>
+
 </div>
+
+
+<div class="music-list">
+
+<label class="file-label">
+
+🎶 Agregar música
+
+<input
+ id="musicInput"
+ type="file"
+ accept="audio/*"
+ multiple>
+
+</label>
+
+
+<select id="musicSelect">
+
+<option value="">
+Selecciona una canción
+</option>
+
+</select>
+
+
+<audio id="audioPlayer" controls></audio>
+
+</div>
+
+
+<p class="privacy-note">
+La música seleccionada es local y no se publica en la página.
+</p>
+
 </section>
 
-<div class="footer">Hecho para guardar nuestra historia, un recuerdo a la vez. ♡</div>
 </main>
 
+
+<footer>
+Hecho con cariño para guardar nuestros recuerdos. ❤️
+</footer>
+
+</div>
+
+
 <script>
-(function(){
-const start=new Date(2026,8,5,17,50,0);
-const $=id=>document.getElementById(id);
+
+/* CONTRASEÑA */
+
+const PASSWORD = "05-09-2026";
+
+
+/* FECHA DE INICIO */
+
+const START_DATE = new Date(
+ 2026,
+ 8,
+ 5,
+ 17,
+ 50,
+ 0
+);
+
+
+/* SISTEMA DE CONTRASEÑA */
+
+const gate =
+document.getElementById("gate");
+
+const app =
+document.getElementById("app");
+
+const loginForm =
+document.getElementById("loginForm");
+
+const passwordInput =
+document.getElementById("password");
+
+const loginError =
+document.getElementById("loginError");
+
+
+if(
+ sessionStorage.getItem("nuestraHistoriaAccess")
+ === "ok"
+){
+ showApp();
+}
+
+
+loginForm.addEventListener(
+ "submit",
+ function(e){
+
+ e.preventDefault();
+
+ if(
+ passwordInput.value === PASSWORD
+ ){
+
+ sessionStorage.setItem(
+  "nuestraHistoriaAccess",
+  "ok"
+ );
+
+ showApp();
+
+ }else{
+
+ loginError.textContent =
+ "Contraseña incorrecta.";
+
+ passwordInput.value = "";
+
+ passwordInput.focus();
+
+ }
+
+ }
+);
+
+
+function showApp(){
+
+ gate.style.display = "none";
+
+ app.style.display = "block";
+
+}
+
+
+/* CONTADOR */
+
+function calendarDifference(
+ start,
+ end
+){
+
+ let years =
+ end.getFullYear() -
+ start.getFullYear();
+
+ let months =
+ end.getMonth() -
+ start.getMonth();
+
+ let days =
+ end.getDate() -
+ start.getDate();
+
+
+ if(days < 0){
+
+ months--;
+
+ days += new Date(
+  end.getFullYear(),
+  end.getMonth(),
+  0
+ ).getDate();
+
+ }
+
+
+ if(months < 0){
+
+ years--;
+
+ months += 12;
+
+ }
+
+
+ if(years < 0){
+
+ return {
+  years:0,
+  months:0,
+  days:0
+ };
+
+ }
+
+
+ return {
+  years,
+  months,
+  days
+ };
+
+}
+
 
 function updateCounter(){
- const now=new Date();
- let y=now.getFullYear()-start.getFullYear();
- let m=now.getMonth()-start.getMonth();
- let d=now.getDate()-start.getDate();
 
- if(d<0){
-   m--;
-   d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();
- }
- if(m<0){y--;m+=12}
-
- let anchor=new Date(
-   start.getFullYear()+y,
-   start.getMonth()+m,
-   start.getDate(),
-   start.getHours(),
-   start.getMinutes(),
-   start.getSeconds()
+ const d =
+ calendarDifference(
+  START_DATE,
+  new Date()
  );
- let total=Math.max(0,now-anchor);
- let h=Math.floor(total/3600000);
 
- $("years").textContent=y;
- $("months").textContent=m;
- $("days").textContent=d;
- $("hours").textContent=h;
- $("since").textContent="Comenzamos el 5 de septiembre de 2026, aproximadamente a las 17:50";
+ document.getElementById(
+  "years"
+ ).textContent = d.years;
+
+ document.getElementById(
+  "months"
+ ).textContent = d.months;
+
+ document.getElementById(
+  "days"
+ ).textContent = d.days;
+
 }
-updateCounter();
-setInterval(updateCounter,1000);
 
-const names=[
-"Primer mes","Segundo mes","Tercer mes","Cuarto mes",
-"Quinto mes","Sexto mes","Séptimo mes","Octavo mes",
-"Noveno mes","Décimo mes","Once meses","Un año"
+
+updateCounter();
+
+setInterval(
+ updateCounter,
+ 60000
+);
+
+
+/* MESES */
+
+const names = [
+
+"Primer mes",
+"Segundo mes",
+"Tercer mes",
+"Cuarto mes",
+"Quinto mes",
+"Sexto mes",
+"Séptimo mes",
+"Octavo mes",
+"Noveno mes",
+"Décimo mes",
+"Undécimo mes",
+"Un año"
+
 ];
 
-const list=$("month-list");
-const selected=$("selected-month");
-const textArea=$("memory-text");
-const photos=$("photos");
-const preview=$("preview");
-const saved=$("saved");
-let chosen=0;
 
-names.forEach((name,index)=>{
- const button=document.createElement("button");
- button.type="button";
- button.className="month"+(index===0?" active":"");
- button.innerHTML="<strong>"+name+"</strong><span>Recuerdos y momentos</span>";
+const texts = [
 
- button.addEventListener("click",()=>{
-   chosen=index;
-   document.querySelectorAll(".month").forEach(x=>x.classList.remove("active"));
-   button.classList.add("active");
-   selected.textContent=name;
-   saved.textContent="";
-   textArea.value="";
-   preview.innerHTML="";
+"El comienzo de nuestra historia y de todos los recuerdos que vendrán.",
+
+"Otro pedacito de nuestra historia para guardar.",
+
+"Seguimos sumando momentos que merecen ser recordados.",
+
+"Un nuevo capítulo de esta historia.",
+
+"Más recuerdos, más experiencias y más momentos compartidos.",
+
+"Mitad de este primer año de recuerdos.",
+
+"Seguimos avanzando y creando nuestra propia historia.",
+
+"Otro mes que merece un espacio entre nuestros recuerdos.",
+
+"Pequeños momentos que se convierten en grandes recuerdos.",
+
+"Seguimos escribiendo esta historia juntos.",
+
+"Cada recuerdo hace que esta historia sea más especial.",
+
+"Un año de momentos que vale la pena guardar."
+
+];
+
+
+const monthButtons =
+document.getElementById("monthButtons");
+
+const monthsView =
+document.getElementById("monthsView");
+
+const monthPanel =
+document.getElementById("monthPanel");
+
+const selectedMonthTitle =
+document.getElementById("selectedMonthTitle");
+
+const collage =
+document.getElementById("collage");
+
+const photoInput =
+document.getElementById("photoInput");
+
+
+let selectedMonth = null;
+
+let selectedFiles = [];
+
+
+names.forEach(
+ (name,index)=>{
+
+ const button =
+ document.createElement("button");
+
+ button.className =
+ "month-btn";
+
+ button.innerHTML =
+ `<strong>${name}</strong>
+ <span>${texts[index]}</span>`;
+
+ button.onclick =
+ ()=>{
+  openMonth(index);
+ };
+
+ monthButtons.appendChild(
+  button
+ );
+
+ }
+);
+
+
+function storageKey(index){
+
+ return "nuestra_historia_fotos_" + index;
+
+}
+
+
+function openMonth(index){
+
+ selectedMonth = index;
+
+ selectedFiles = [];
+
+ photoInput.value = "";
+
+ selectedMonthTitle.textContent =
+ names[index];
+
+ monthsView.style.display =
+ "none";
+
+ monthPanel.classList.add(
+ "active"
+ );
+
+ renderSavedPhotos();
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
  });
- list.appendChild(button);
-});
 
-photos.addEventListener("change",()=>{
- preview.innerHTML="";
- Array.from(photos.files).slice(0,9).forEach(file=>{
-   const reader=new FileReader();
-   reader.onload=e=>{
-     const img=document.createElement("img");
-     img.src=e.target.result;
-     img.alt="Foto del recuerdo";
-     preview.appendChild(img);
-   };
-   reader.readAsDataURL(file);
- });
-});
+}
 
-$("save").addEventListener("click",()=>{
- saved.textContent="♡ Recuerdo preparado para "+names[chosen]+".";
-});
-})();
+
+document.getElementById(
+ "backBtn"
+).onclick = function(){
+
+ monthPanel.classList.remove(
+  "active"
+ );
+
+ monthsView.style.display =
+ "block";
+
+ selectedMonth = null;
+
+ selectedFiles = [];
+
+};
+
+
+photoInput.onchange =
+ function(){
+
+ selectedFiles =
+ Array.from(
+  photoInput.files
+ ).slice(0,9);
+
+ renderPreview();
+
+ };
+
+
+function renderPreview(){
+
+ if(!selectedFiles.length){
+
+ renderSavedPhotos();
+
+ return;
+
+ }
+
+
+ collage.innerHTML = "";
+
+
+ selectedFiles.forEach(
+  (file,index)=>{
+
+  const img =
+  document.createElement("img");
+
+  img.className =
+  "photo";
+
+  img.alt =
+  "Vista previa";
+
+  img.style.animationDelay =
+  `${index*50}ms`;
+
+  const reader =
+  new FileReader();
+
+  reader.onload =
+  event=>{
+   img.src =
+   event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+
+  collage.appendChild(img);
+
+  }
+ );
+
+}
+
+
+document.getElementById(
+ "savePhotos"
+).onclick =
+async function(){
+
+ if(selectedMonth === null)
+ return;
+
+
+ if(!selectedFiles.length){
+
+ alert(
+  "Primero selecciona una o más fotos."
+ );
+
+ return;
+
+ }
+
+
+ try{
+
+ const images =
+ await Promise.all(
+
+  selectedFiles.map(
+   file=>
+   new Promise(
+    (resolve,reject)=>{
+
+     const reader =
+     new FileReader();
+
+     reader.onload =
+     ()=>{
+      resolve(
+       reader.result
+      );
+     };
+
+     reader.onerror =
+     reject;
+
+     reader.readAsDataURL(file);
+
+    }
+   )
+  )
+
+ );
+
+
+ localStorage.setItem(
+  storageKey(selectedMonth),
+  JSON.stringify(images)
+ );
+
+
+ selectedFiles = [];
+
+ photoInput.value = "";
+
+ renderSavedPhotos();
+
+
+ alert(
+  "Fotos guardadas en este dispositivo. ❤️"
+ );
+
+
+ }catch(error){
+
+ alert(
+  "No se pudieron guardar las fotos; el navegador puede haber alcanzado su límite de almacenamiento."
+ );
+
+ }
+
+};
+
+
+function renderSavedPhotos(){
+
+ collage.innerHTML = "";
+
+
+ if(selectedMonth === null)
+ return;
+
+
+ let saved = [];
+
+
+ try{
+
+ saved =
+ JSON.parse(
+  localStorage.getItem(
+   storageKey(selectedMonth)
+  ) || "[]"
+ );
+
+ }catch(e){}
+
+
+ if(!saved.length){
+
+ collage.innerHTML =
+ `<div class="empty">
+ Todavía no hay fotos guardadas para este mes.
+ </div>`;
+
+ return;
+
+ }
+
+
+ saved.slice(0,9).forEach(
+  (src,index)=>{
+
+  const img =
+  document.createElement("img");
+
+  img.className =
+  "photo";
+
+  img.src =
+  src;
+
+  img.alt =
+  "Recuerdo";
+
+  img.style.animationDelay =
+  `${index*50}ms`;
+
+  collage.appendChild(img);
+
+  }
+ );
+
+}
+
+
+/* MÚSICA */
+
+const musicInput =
+document.getElementById("musicInput");
+
+const musicSelect =
+document.getElementById("musicSelect");
+
+const audioPlayer =
+document.getElementById("audioPlayer");
+
+
+let musicUrls = [];
+
+
+musicInput.onchange =
+function(){
+
+ musicUrls.forEach(
+  url=>{
+   URL.revokeObjectURL(url);
+  }
+ );
+
+ musicUrls = [];
+
+
+ musicSelect.innerHTML =
+ `<option value="">
+ Selecciona una canción
+ </option>`;
+
+
+ Array.from(
+  musicInput.files
+ ).forEach(
+  (file,index)=>{
+
+  const url =
+  URL.createObjectURL(file);
+
+  musicUrls.push(url);
+
+
+  const option =
+  document.createElement("option");
+
+  option.value =
+  index;
+
+  option.textContent =
+  file.name;
+
+  musicSelect.appendChild(
+   option
+  );
+
+  }
+ );
+
+
+ if(musicUrls.length){
+
+ musicSelect.value = 0;
+
+ audioPlayer.src =
+ musicUrls[0];
+
+ }
+
+};
+
+
+musicSelect.onchange =
+function(){
+
+ const index =
+ Number(musicSelect.value);
+
+
+ if(musicUrls[index]){
+
+ audioPlayer.src =
+ musicUrls[index];
+
+ audioPlayer.play().catch(
+  ()=>{}
+ );
+
+ }
+
+};
+
 </script>
+
 </body>
 </html>
