@@ -4,23 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra historia ❤️</title>
-<meta name="description" content="Nuestra historia, nuestros recuerdos y cada mes juntos.">
 
 <style>
 :root{
   --bg:#fff7fb;
-  --card:rgba(255,255,255,.88);
+  --card:rgba(255,255,255,.9);
   --text:#3d2430;
   --muted:#856b76;
   --pink:#e85d8a;
-  --pink2:#ff9fbd;
   --line:#f1d7e1;
   --shadow:0 18px 45px rgba(132,55,84,.13);
-  --radius:24px;
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -33,79 +33,99 @@ body{
   min-height:100vh;
 }
 
-button,input{font:inherit}
-button{cursor:pointer}
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
 
 .hearts{
   position:fixed;
   inset:0;
-  pointer-events:none;
   overflow:hidden;
+  pointer-events:none;
   z-index:0;
 }
 
 .heart{
   position:absolute;
-  bottom:-30px;
+  bottom:-40px;
+  color:#e85d8a;
   opacity:.18;
-  animation:floatUp linear infinite;
-  user-select:none;
+  animation:subir linear infinite;
 }
 
-@keyframes floatUp{
-  from{transform:translateY(0) rotate(0deg);opacity:0}
+@keyframes subir{
+  from{
+    transform:translateY(0) rotate(0);
+    opacity:0;
+  }
   15%{opacity:.2}
-  to{transform:translateY(-110vh) rotate(30deg);opacity:0}
+  to{
+    transform:translateY(-110vh) rotate(30deg);
+    opacity:0;
+  }
 }
-
-main,.topbar{position:relative;z-index:1}
 
 .topbar{
+  position:relative;
+  z-index:2;
   width:min(1120px,calc(100% - 28px));
   margin:16px auto 0;
+  padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:10px 14px;
-  background:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.75);
   backdrop-filter:blur(12px);
-  border:1px solid rgba(241,215,225,.8);
+  border:1px solid var(--line);
   border-radius:18px;
   box-shadow:0 8px 30px rgba(132,55,84,.07);
 }
 
 .brand{
-  font-weight:800;
   color:var(--pink);
+  font-weight:800;
 }
 
 .sync{
-  font-size:.85rem;
-  color:var(--muted);
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
+  color:var(--muted);
+  font-size:.86rem;
 }
 
-.dot{
-  width:8px;
-  height:8px;
+.sync-dot{
+  width:9px;
+  height:9px;
   border-radius:50%;
   background:#41b883;
   box-shadow:0 0 0 4px rgba(65,184,131,.12);
 }
 
-.dot.off{
+.sync-dot.off{
   background:#d9829d;
   box-shadow:0 0 0 4px rgba(217,130,157,.12);
 }
 
+main{
+  position:relative;
+  z-index:1;
+}
+
 .hero{
-  width:min(980px,calc(100% - 28px));
-  margin:34px auto 24px;
+  width:min(950px,calc(100% - 28px));
+  margin:35px auto 25px;
+  padding:48px 25px;
   text-align:center;
-  padding:42px 22px 36px;
+  border-radius:32px;
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
 }
 
 .eyebrow{
@@ -113,67 +133,66 @@ main,.topbar{position:relative;z-index:1}
   font-weight:800;
   letter-spacing:.08em;
   text-transform:uppercase;
-  font-size:.78rem;
+  font-size:.8rem;
 }
 
 h1{
-  margin:10px 0;
-  font-size:clamp(2.5rem,8vw,5rem);
+  margin:12px 0;
+  font-size:clamp(2.6rem,8vw,5rem);
   line-height:.98;
   letter-spacing:-.05em;
 }
 
-.subtitle{
-  margin:0 auto;
+.hero p{
   max-width:700px;
+  margin:auto;
   color:var(--muted);
-  font-size:1.06rem;
   line-height:1.7;
-}
-
-.counter-card{
-  width:min(900px,calc(100% - 28px));
-  margin:0 auto 34px;
-  padding:26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  text-align:center;
+  font-size:1.05rem;
 }
 
 .counter{
+  width:min(900px,calc(100% - 28px));
+  margin:0 auto 30px;
+  padding:25px;
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:25px;
+  box-shadow:var(--shadow);
+}
+
+.counter-boxes{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:12px;
-  margin-top:14px;
+  margin-top:15px;
 }
 
-.timebox{
-  min-width:110px;
-  padding:16px 18px;
+.counter-box{
+  min-width:105px;
+  padding:16px;
   border-radius:18px;
-  background:#fff;
-  border:1px solid #f2dfe6;
+  background:white;
+  border:1px solid var(--line);
 }
 
-.timebox strong{
+.counter-number{
   display:block;
-  font-size:2rem;
   color:var(--pink);
-  line-height:1;
+  font-size:2rem;
+  font-weight:900;
 }
 
-.timebox span{
+.counter-label{
   color:var(--muted);
-  font-size:.86rem;
+  font-size:.85rem;
 }
 
-.since{
-  margin:16px 0 0;
+.counter p{
   color:var(--muted);
-  font-size:.9rem;
+  margin:15px 0 0;
 }
 
 .section{
@@ -182,98 +201,96 @@ h1{
   padding:28px;
   background:var(--card);
   border:1px solid var(--line);
-  border-radius:var(--radius);
+  border-radius:25px;
   box-shadow:var(--shadow);
 }
 
 .section h2{
   margin:0 0 8px;
-  font-size:1.7rem;
+  font-size:1.8rem;
 }
 
-.section-intro{
-  margin:0 0 22px;
+.intro{
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .message{
-  font-size:1.08rem;
-  line-height:1.85;
-  text-align:center;
   max-width:780px;
-  margin:0 auto;
+  margin:auto;
+  text-align:center;
+  line-height:1.85;
+  font-size:1.08rem;
 }
 
 .months{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:13px;
 }
 
-.month-btn{
+.month{
   border:1px solid var(--line);
   background:#fff;
-  color:var(--text);
-  border-radius:18px;
-  padding:17px 12px;
+  border-radius:19px;
+  padding:17px 13px;
   text-align:left;
-  transition:.2s ease;
+  color:var(--text);
+  transition:.2s;
   box-shadow:0 7px 18px rgba(132,55,84,.05);
 }
 
-.month-btn:hover,
-.month-btn.active{
+.month:hover,
+.month.active{
   transform:translateY(-2px);
   border-color:#ef9fba;
   box-shadow:0 12px 24px rgba(132,55,84,.11);
 }
 
 .month-number{
-  display:inline-flex;
-  width:30px;
-  height:30px;
+  display:flex;
+  width:31px;
+  height:31px;
   align-items:center;
   justify-content:center;
   border-radius:50%;
   background:#fff0f5;
   color:var(--pink);
-  font-weight:800;
-  margin-bottom:9px;
+  font-weight:900;
+  margin-bottom:8px;
 }
 
-.month-title{
-  font-weight:800;
+.month-name{
   display:block;
+  font-weight:800;
 }
 
 .month-status{
-  font-size:.78rem;
-  color:var(--muted);
   display:block;
-  margin-top:4px;
+  color:var(--muted);
+  font-size:.78rem;
+  margin-top:5px;
 }
 
 .panel{
-  margin-top:20px;
+  margin-top:22px;
   padding:24px;
   border-radius:22px;
   background:linear-gradient(180deg,#fffafd,#fff);
   border:1px solid var(--line);
 }
 
-.panel-head{
+.panel-header{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:14px;
   flex-wrap:wrap;
-  margin-bottom:18px;
+  gap:12px;
 }
 
 .panel h3{
   margin:0 0 5px;
-  font-size:1.45rem;
+  font-size:1.5rem;
 }
 
 .panel small{
@@ -291,28 +308,28 @@ h1{
   border:0;
   border-radius:13px;
   padding:11px 15px;
-  font-weight:750;
-  transition:.2s ease;
+  font-weight:800;
+  transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-1px);
 }
 
-.btn-primary{
+.primary{
   background:var(--pink);
-  color:#fff;
+  color:white;
 }
 
-.btn-soft{
+.secondary{
   background:#fff0f5;
   color:#9e365d;
   border:1px solid #f2c8d7;
 }
 
-.btn-dark{
+.dark{
   background:#49303b;
-  color:#fff;
+  color:white;
 }
 
 .btn:disabled{
@@ -321,29 +338,7 @@ h1{
   transform:none;
 }
 
-.field{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.field input[type="url"]{
-  flex:1 1 300px;
-  min-width:0;
-  border:1px solid #e6cfd8;
-  border-radius:13px;
-  padding:12px 14px;
-  outline:none;
-  background:#fff;
-}
-
-.field input[type="url"]:focus{
-  border-color:#e98cab;
-  box-shadow:0 0 0 4px rgba(232,93,138,.1);
-}
-
-input[type="file"]{
+input[type=file]{
   width:100%;
   padding:13px;
   border:1px dashed #e3b9c8;
@@ -351,79 +346,85 @@ input[type="file"]{
   background:#fffafd;
 }
 
-.music-box{
-  padding:17px;
+.music{
+  margin-top:22px;
+  padding:18px;
+  background:white;
   border:1px solid var(--line);
   border-radius:18px;
-  background:#fff;
-  margin-top:18px;
 }
 
 .music-title{
   font-weight:800;
-  margin-bottom:7px;
+  margin-bottom:9px;
+}
+
+.music-row{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.music-row input{
+  flex:1;
+  min-width:220px;
+  border:1px solid #e6cfd8;
+  border-radius:13px;
+  padding:12px 14px;
+  outline:none;
+}
+
+.music-row input:focus{
+  border-color:var(--pink);
+  box-shadow:0 0 0 4px rgba(232,93,138,.1);
 }
 
 .music-link{
-  word-break:break-all;
-  color:#b23f67;
-  font-size:.9rem;
-}
-
-.music-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
   margin-top:12px;
+  color:#b23f67;
+  word-break:break-all;
+  font-size:.9rem;
 }
 
 .collage{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:18px;
+  margin-top:15px;
 }
 
 .photo{
   position:relative;
   min-height:190px;
-  border-radius:16px;
+  padding:0;
   overflow:hidden;
-  background:#f8eaf0;
   border:1px solid #f0d9e2;
-}
-
-.photo:first-child:nth-last-child(2){
-  grid-column:span 2;
-}
-
-.photo:first-child:nth-last-child(1){
-  grid-column:span 3;
+  border-radius:16px;
+  background:#f8eaf0;
 }
 
 .photo img{
   width:100%;
   height:100%;
   min-height:190px;
-  display:block;
   object-fit:cover;
-  transition:.25s ease;
+  display:block;
+  transition:.25s;
 }
 
 .photo:hover img{
-  transform:scale(1.03);
+  transform:scale(1.04);
 }
 
 .photo-label{
   position:absolute;
-  left:9px;
-  bottom:9px;
-  background:rgba(0,0,0,.52);
-  color:#fff;
+  left:8px;
+  bottom:8px;
+  color:white;
+  background:rgba(0,0,0,.5);
   padding:5px 8px;
-  border-radius:9px;
-  font-size:.74rem;
-  backdrop-filter:blur(6px);
+  border-radius:8px;
+  font-size:.75rem;
 }
 
 .empty{
@@ -433,12 +434,13 @@ input[type="file"]{
   border:1px dashed #e6cbd6;
   border-radius:17px;
   background:#fffafd;
+  margin-top:15px;
 }
 
 .loading{
-  padding:20px;
   text-align:center;
   color:var(--muted);
+  padding:20px;
 }
 
 .footer{
@@ -452,12 +454,12 @@ input[type="file"]{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(25,12,18,.78);
+  z-index:50;
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:20;
   padding:18px;
+  background:rgba(25,12,18,.8);
 }
 
 .modal.show{
@@ -467,62 +469,57 @@ input[type="file"]{
 .modal-card{
   width:min(1000px,100%);
   max-height:94vh;
-  background:#fff;
-  border-radius:24px;
   padding:16px;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.modal-card img{
-  width:100%;
-  max-height:78vh;
-  object-fit:contain;
-  border-radius:16px;
-  background:#1c1116;
+  border-radius:24px;
+  background:white;
 }
 
 .modal-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  margin-bottom:10px;
 }
 
-.modal-counter{
+.modal-card img{
+  display:block;
+  width:100%;
+  max-height:78vh;
+  object-fit:contain;
+  background:#1c1116;
+  border-radius:16px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f6e9ee;
+  color:#6f4654;
+  font-size:1.3rem;
+}
+
+.slide-counter{
   color:var(--muted);
   font-size:.9rem;
 }
 
-.close{
-  border:0;
-  background:#f6e9ee;
-  color:#6f4654;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  font-size:1.3rem;
-}
-
 .toast{
   position:fixed;
+  z-index:100;
   left:50%;
   bottom:22px;
   transform:translate(-50%,20px);
   opacity:0;
   pointer-events:none;
-  z-index:50;
-  background:#3f2933;
-  color:#fff;
-  padding:12px 16px;
+  max-width:90%;
+  padding:12px 17px;
   border-radius:13px;
-  box-shadow:0 12px 30px rgba(0,0,0,.2);
-  transition:.25s ease;
-  max-width:min(90vw,520px);
+  background:#3f2933;
+  color:white;
   text-align:center;
-  font-size:.9rem;
+  transition:.25s;
 }
 
 .toast.show{
@@ -532,38 +529,21 @@ input[type="file"]{
 
 @media(max-width:800px){
   .months{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,1fr);
   }
 
   .collage{
     grid-template-columns:repeat(2,1fr);
   }
-
-  .photo:first-child:nth-last-child(2),
-  .photo:first-child:nth-last-child(1){
-    grid-column:span 2;
-  }
 }
 
 @media(max-width:520px){
   .hero{
-    padding-top:24px;
+    padding:35px 18px;
   }
 
   .section{
     padding:20px;
-  }
-
-  .counter-card{
-    padding:20px;
-  }
-
-  .timebox{
-    min-width:90px;
-  }
-
-  .timebox strong{
-    font-size:1.6rem;
   }
 
   .months{
@@ -574,14 +554,13 @@ input[type="file"]{
     grid-template-columns:1fr;
   }
 
-  .photo:first-child:nth-last-child(2),
-  .photo:first-child:nth-last-child(1){
-    grid-column:span 1;
-  }
-
   .photo,
   .photo img{
     min-height:230px;
+  }
+
+  .counter-box{
+    min-width:88px;
   }
 }
 </style>
@@ -589,21 +568,21 @@ input[type="file"]{
 
 <body>
 
-<div class="hearts" aria-hidden="true">
+<div class="hearts">
   <span class="heart" style="left:5%;font-size:22px;animation-duration:13s">♥</span>
-  <span class="heart" style="left:17%;font-size:16px;animation-duration:17s;animation-delay:3s">♥</span>
-  <span class="heart" style="left:31%;font-size:28px;animation-duration:15s;animation-delay:7s">♥</span>
-  <span class="heart" style="left:48%;font-size:18px;animation-duration:19s;animation-delay:2s">♥</span>
-  <span class="heart" style="left:64%;font-size:25px;animation-duration:14s;animation-delay:5s">♥</span>
-  <span class="heart" style="left:79%;font-size:17px;animation-duration:18s;animation-delay:1s">♥</span>
-  <span class="heart" style="left:92%;font-size:30px;animation-duration:16s;animation-delay:8s">♥</span>
+  <span class="heart" style="left:18%;font-size:16px;animation-duration:17s;animation-delay:3s">♥</span>
+  <span class="heart" style="left:32%;font-size:28px;animation-duration:15s;animation-delay:7s">♥</span>
+  <span class="heart" style="left:49%;font-size:18px;animation-duration:19s;animation-delay:2s">♥</span>
+  <span class="heart" style="left:65%;font-size:25px;animation-duration:14s;animation-delay:5s">♥</span>
+  <span class="heart" style="left:80%;font-size:17px;animation-duration:18s;animation-delay:1s">♥</span>
+  <span class="heart" style="left:93%;font-size:30px;animation-duration:16s;animation-delay:8s">♥</span>
 </div>
 
 <header class="topbar">
   <div class="brand">Nuestra historia ❤️</div>
 
   <div class="sync">
-    <span class="dot" id="syncDot"></span>
+    <span class="sync-dot" id="syncDot"></span>
     <span id="syncText">Conectando...</span>
   </div>
 </header>
@@ -611,42 +590,50 @@ input[type="file"]{
 <main>
 
 <section class="hero">
-  <div class="eyebrow">Un recuerdo a la vez</div>
 
-  <h1>Nuestra historia</h1>
+  <div class="eyebrow">
+    Nuestra historia
+  </div>
 
-  <p class="subtitle">
-    Un pequeño lugar para guardar nuestros momentos, nuestras fotos,
-    nuestra música y todo lo bonito que vayamos viviendo.
+  <h1>
+    Un comienzo<br>
+    para recordar ❤️
+  </h1>
+
+  <p>
+    Hay historias que comienzan con un momento pequeño,
+    pero terminan convirtiéndose en algo muy importante.
+    Esta es la nuestra.
   </p>
+
 </section>
 
-<section class="counter-card">
+<section class="counter">
 
   <div class="eyebrow">
     El tiempo que llevamos escribiendo
   </div>
 
-  <div class="counter">
+  <div class="counter-boxes">
 
-    <div class="timebox">
-      <strong id="years">0</strong>
-      <span>Años</span>
+    <div class="counter-box">
+      <span class="counter-number" id="years">0</span>
+      <span class="counter-label">años</span>
     </div>
 
-    <div class="timebox">
-      <strong id="months">0</strong>
-      <span>Meses</span>
+    <div class="counter-box">
+      <span class="counter-number" id="months">0</span>
+      <span class="counter-label">meses</span>
     </div>
 
-    <div class="timebox">
-      <strong id="days">0</strong>
-      <span>Días</span>
+    <div class="counter-box">
+      <span class="counter-number" id="days">0</span>
+      <span class="counter-label">días</span>
     </div>
 
   </div>
 
-  <p class="since">
+  <p>
     Cada día es una página más de nuestra historia.
   </p>
 
@@ -657,21 +644,20 @@ input[type="file"]{
   <h2>Un comienzo</h2>
 
   <p class="message">
-    Esto es apenas el comienzo de una historia que quiero seguir construyendo
-    contigo. Habrá días fáciles y otros no tanto, momentos para reír y momentos
-    para aprender, pero lo importante será seguir avanzando juntos, cuidándonos,
-    escuchándonos y llenando estas páginas de recuerdos que valga la pena guardar.
+    Quiero que esto sea solamente el comienzo de muchos recuerdos.
+    Que podamos disfrutar los momentos bonitos, aprender de los difíciles
+    y seguir construyendo nuestra historia poco a poco. ❤️
   </p>
 
 </section>
 
-<section class="section" id="recuerdos">
+<section class="section">
 
-  <h2>Nuestros meses</h2>
+  <h2>Nuestros recuerdos</h2>
 
-  <p class="section-intro">
-    Elige un mes para guardar fotos y una canción. Todo lo que se guarde aquí
-    queda en nuestra nube para que podamos verlo desde ambos teléfonos.
+  <p class="intro">
+    Elige un mes para guardar fotografías y una canción.
+    Todo lo que guardemos aquí quedará en nuestra nube.
   </p>
 
   <div class="months" id="monthsGrid"></div>
@@ -690,43 +676,32 @@ input[type="file"]{
   Hecho para guardar pequeños momentos que algún día serán grandes recuerdos. ❤️
 </footer>
 
-<div class="modal" id="slideshowModal" aria-hidden="true">
+
+<div class="modal" id="slideshowModal">
 
   <div class="modal-card">
 
     <div class="modal-top">
 
-      <div class="modal-counter" id="slideCounter">
+      <span class="slide-counter" id="slideCounter">
         1 / 1
-      </div>
+      </span>
 
-      <button
-        class="close"
-        id="closeModal"
-        aria-label="Cerrar">
+      <button class="close" id="closeModal">
         ×
       </button>
 
     </div>
 
-    <img
-      id="slideImage"
-      src=""
-      alt="Foto del recuerdo">
+    <img id="slideImage" src="" alt="Recuerdo">
 
-    <div
-      class="actions"
-      style="justify-content:center;margin:0">
+    <div class="actions" style="justify-content:center">
 
-      <button
-        class="btn btn-soft"
-        id="prevSlide">
+      <button class="btn secondary" id="prevSlide">
         ← Anterior
       </button>
 
-      <button
-        class="btn btn-primary"
-        id="nextSlide">
+      <button class="btn primary" id="nextSlide">
         Siguiente →
       </button>
 
@@ -736,19 +711,18 @@ input[type="file"]{
 
 </div>
 
+
 <div class="toast" id="toast"></div>
+
 
 <script>
 
 /* ============================================================
-   CONFIGURACIÓN
+   CONFIGURACIÓN DE SUPABASE
    ============================================================ */
 
-const START_DATE =
-  new Date(2026,8,5,17,50,0);
-
 const SUPABASE_URL =
-  "https://qrqshvszanznyjudyotk.supabase.co";
+  "https://qrgshvszanznyjudyotk.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_XbVYpB_mM2MFYecgN6eFOg_lVRmG7q7";
@@ -765,6 +739,19 @@ const STORAGE_LIST_URL =
   "/storage/v1/object/list/" +
   encodeURIComponent(BUCKET_NAME);
 
+
+/* ============================================================
+   FECHA DE INICIO
+   ============================================================ */
+
+const START_DATE =
+  new Date(2026,8,5,17,50,0);
+
+
+/* ============================================================
+   MESES
+   ============================================================ */
+
 const MONTH_NAMES = [
   "Primer mes",
   "Segundo mes",
@@ -779,6 +766,7 @@ const MONTH_NAMES = [
   "Undécimo mes",
   "Un año"
 ];
+
 
 let selectedMonth = 0;
 let currentPhotos = [];
@@ -801,46 +789,61 @@ function escapeHtml(value){
 
 }
 
-function toast(message){
 
-  const element =
+function showToast(message){
+
+  const toast =
     document.getElementById("toast");
 
-  element.textContent =
+  toast.textContent =
     message;
 
-  element.classList.add("show");
+  toast.classList.add("show");
 
   clearTimeout(
-    window.__toastTimer
+    window.toastTimer
   );
 
-  window.__toastTimer =
+  window.toastTimer =
     setTimeout(
       ()=>{
-        element.classList.remove("show");
+        toast.classList.remove("show");
       },
-      4000
+      4500
     );
 
 }
 
-function setSync(online,text){
+
+function setConnection(
+  connected,
+  text
+){
 
   document.getElementById(
     "syncText"
-  ).textContent = text;
+  ).textContent =
+    text;
 
   document.getElementById(
     "syncDot"
   ).classList.toggle(
     "off",
-    !online
+    !connected
   );
 
 }
 
-function storageHeaders(extra={}){
+
+function storageHeaders(
+  extra={}
+){
+
+  /*
+    Con la clave sb_publishable_
+    utilizamos apikey.
+    No usamos Authorization Bearer.
+  */
 
   return {
     "apikey":
@@ -850,18 +853,21 @@ function storageHeaders(extra={}){
 
 }
 
-function encodeStoragePath(path){
+
+function encodePath(path){
 
   return path
     .split("/")
     .map(
-      encodeURIComponent
+      part =>
+        encodeURIComponent(part)
     )
     .join("/");
 
 }
 
-function publicStorageUrl(path){
+
+function publicUrl(path){
 
   return (
     STORAGE_OBJECT_URL +
@@ -870,45 +876,41 @@ function publicStorageUrl(path){
       BUCKET_NAME
     ) +
     "/" +
-    encodeStoragePath(path)
+    encodePath(path)
   );
 
 }
 
 
 /* ============================================================
-   ERRORES SUPABASE
+   LEER ERROR DE SUPABASE
    ============================================================ */
 
-async function readError(response){
-
-  let detail = "";
+async function getErrorMessage(
+  response
+){
 
   try{
 
     const data =
       await response.json();
 
-    detail =
-      data?.message ||
-      data?.error ||
-      data?.error_description ||
-      "";
+    return (
+      data.message ||
+      data.error ||
+      data.error_description ||
+      "HTTP " +
+      response.status
+    );
 
-  }catch(_){
+  }catch(error){
 
-    try{
-      detail =
-        await response.text();
-    }catch(__){}
+    return (
+      "HTTP " +
+      response.status
+    );
 
   }
-
-  return (
-    detail ||
-    "HTTP " +
-    response.status
-  );
 
 }
 
@@ -917,7 +919,7 @@ async function readError(response){
    SUBIR ARCHIVO
    ============================================================ */
 
-async function uploadStorage(
+async function uploadFile(
   path,
   body,
   contentType
@@ -930,7 +932,7 @@ async function uploadStorage(
       BUCKET_NAME
     ) +
     "/" +
-    encodeStoragePath(path);
+    encodePath(path);
 
   const response =
     await fetch(
@@ -953,7 +955,7 @@ async function uploadStorage(
   if(!response.ok){
 
     throw new Error(
-      await readError(
+      await getErrorMessage(
         response
       )
     );
@@ -969,7 +971,9 @@ async function uploadStorage(
    LISTAR ARCHIVOS
    ============================================================ */
 
-async function listStorage(prefix){
+async function listFiles(
+  prefix=""
+){
 
   const response =
     await fetch(
@@ -999,7 +1003,7 @@ async function listStorage(prefix){
   if(!response.ok){
 
     throw new Error(
-      await readError(
+      await getErrorMessage(
         response
       )
     );
@@ -1079,31 +1083,29 @@ function calendarDifference(
 
 }
 
+
 function updateCounter(){
 
-  const now =
-    new Date();
-
-  const diff =
+  const difference =
     calendarDifference(
       START_DATE,
-      now
+      new Date()
     );
 
   document.getElementById(
     "years"
   ).textContent =
-    diff.years;
+    difference.years;
 
   document.getElementById(
     "months"
   ).textContent =
-    diff.months;
+    difference.months;
 
   document.getElementById(
     "days"
   ).textContent =
-    diff.days;
+    difference.days;
 
 }
 
@@ -1120,43 +1122,105 @@ function renderMonths(){
     );
 
   grid.innerHTML =
-    MONTH_NAMES.map(
-      (name,index)=>`
+    MONTH_NAMES
+      .map(
+        (name,index)=>`
 
-        <button
-          class="month-btn ${index===selectedMonth?"active":""}"
-          onclick="selectMonth(${index})">
+          <button
+            class="month ${
+              index === selectedMonth
+                ? "active"
+                : ""
+            }"
+            onclick="selectMonth(${index})">
 
-          <span class="month-number">
-            ${index+1}
-          </span>
+            <span class="month-number">
+              ${index + 1}
+            </span>
 
-          <span class="month-title">
-            ${escapeHtml(name)}
-          </span>
+            <span class="month-name">
+              ${escapeHtml(name)}
+            </span>
 
-          <span
-            class="month-status"
-            id="status-${index}">
-            Comprobando...
-          </span>
+            <span
+              class="month-status"
+              id="month-status-${index}">
+              Comprobando...
+            </span>
 
-        </button>
+          </button>
 
-      `
-    ).join("");
+        `
+      )
+      .join("");
 
 }
 
-async function selectMonth(index){
+
+/* ============================================================
+   OBTENER FOTOS
+   ============================================================ */
+
+async function getPhotos(
+  monthIndex
+){
+
+  const prefix =
+    "mes-" +
+    (monthIndex + 1) +
+    "/";
+
+  const files =
+    await listFiles(
+      prefix
+    );
+
+  return files
+
+    .filter(
+      file =>
+        file &&
+        file.name
+    )
+
+    .filter(
+      file =>
+        /\.(jpg|jpeg|png|webp|gif|heic)$/i
+          .test(file.name)
+    )
+
+    .map(
+      file => {
+
+        const path =
+          prefix +
+          file.name;
+
+        return {
+          name:file.name,
+          path:path,
+          url:publicUrl(path)
+        };
+
+      }
+    );
+
+}
+
+
+/* ============================================================
+   SELECCIONAR MES
+   ============================================================ */
+
+async function selectMonth(
+  index
+){
 
   selectedMonth =
     index;
 
   document
-    .querySelectorAll(
-      ".month-btn"
-    )
+    .querySelectorAll(".month")
     .forEach(
       (button,i)=>{
         button.classList.toggle(
@@ -1181,107 +1245,48 @@ async function selectMonth(index){
 
 
 /* ============================================================
-   FOTOS
+   SUBIR FOTOS
    ============================================================ */
 
-async function getPhotos(monthIndex){
+async function savePhotos(){
 
-  const prefix =
-    "mes-" +
-    (monthIndex + 1) +
-    "/";
-
-  const items =
-    await listStorage(
-      prefix
+  const input =
+    document.getElementById(
+      "photoInput"
     );
 
-  /*
-    IMPORTANTE:
-    No filtramos por "id".
-    Supabase devuelve información del
-    archivo que puede contener id.
-  */
-
-  return items
-
-    .filter(
-      item =>
-        item &&
-        item.name
-    )
-
-    .filter(
-      item =>
-        /\.(jpg|jpeg|png|webp|gif|heic)$/i
-          .test(item.name)
-    )
-
-    .map(
-      item=>({
-
-        name:
-          item.name,
-
-        path:
-          prefix +
-          item.name,
-
-        url:
-          publicStorageUrl(
-            prefix +
-            item.name
-          ),
-
-        createdAt:
-          item.created_at ||
-          item.updated_at ||
-          ""
-
-      })
+  const button =
+    document.getElementById(
+      "savePhotosButton"
     );
 
-}
+  const files =
+    Array.from(
+      input.files || []
+    );
 
+  if(!files.length){
 
-async function savePhotosToCloud(
-  files
-){
-
-  if(
-    !files ||
-    !files.length
-  ){
-
-    toast(
-      "Primero selecciona al menos una foto."
+    showToast(
+      "Selecciona al menos una fotografía."
     );
 
     return;
 
   }
 
-  const button =
-    document.getElementById(
-      "savePhotosBtn"
-    );
+  button.disabled =
+    true;
 
-  if(button){
-
-    button.disabled =
-      true;
-
-    button.textContent =
-      "Subiendo fotos...";
-
-  }
+  button.textContent =
+    "Subiendo fotografías...";
 
   try{
 
     let uploaded = 0;
 
     for(
-      const file of Array.from(files)
+      const file of files
     ){
 
       if(
@@ -1289,13 +1294,15 @@ async function savePhotosToCloud(
           "image/"
         )
       ){
+
         continue;
+
       }
 
       const safeName =
         file.name
           .replace(
-            /[^\w.\-() áéíóúÁÉÍÓÚñÑ]/g,
+            /[^\w.\- áéíóúÁÉÍÓÚñÑ()]/g,
             "_"
           )
           .replace(
@@ -1308,7 +1315,7 @@ async function savePhotosToCloud(
         "-" +
         Math.random()
           .toString(36)
-          .slice(2,8) +
+          .substring(2,8) +
         "-" +
         safeName;
 
@@ -1318,11 +1325,10 @@ async function savePhotosToCloud(
         "/" +
         uniqueName;
 
-      await uploadStorage(
+      await uploadFile(
         path,
         file,
-        file.type ||
-        "application/octet-stream"
+        file.type
       );
 
       uploaded++;
@@ -1332,44 +1338,45 @@ async function savePhotosToCloud(
     if(!uploaded){
 
       throw new Error(
-        "No se encontraron archivos de imagen válidos."
+        "No se seleccionaron imágenes válidas."
       );
 
     }
 
-    toast(
+    input.value =
+      "";
+
+    showToast(
       uploaded === 1
-        ? "Foto guardada correctamente ❤️"
-        : uploaded +
-          " fotos guardadas correctamente ❤️"
+        ? "¡Foto guardada correctamente! ❤️"
+        : "¡" +
+          uploaded +
+          " fotos guardadas correctamente! ❤️"
     );
 
     await renderMonthPanel();
 
-    await updateMonthStatuses();
+    await updateStatuses();
 
   }catch(error){
 
     console.error(
+      "Error subiendo fotos:",
       error
     );
 
-    toast(
-      "No se pudieron guardar las fotos. Detalle: " +
+    showToast(
+      "No se pudieron guardar las fotos: " +
       error.message
     );
 
   }finally{
 
-    if(button){
+    button.disabled =
+      false;
 
-      button.disabled =
-        false;
-
-      button.textContent =
-        "Guardar fotos en la nube";
-
-    }
+    button.textContent =
+      "Guardar fotos en la nube";
 
   }
 
@@ -1380,46 +1387,17 @@ async function savePhotosToCloud(
    YOUTUBE
    ============================================================ */
 
-function isYoutubeUrl(url){
+function youtubeId(
+  url
+){
 
   try{
 
-    const u =
+    const parsed =
       new URL(url);
 
     const host =
-      u.hostname
-        .toLowerCase()
-        .replace(
-          "www.",
-          ""
-        );
-
-    return [
-      "youtube.com",
-      "youtu.be",
-      "music.youtube.com"
-    ].includes(
-      host
-    );
-
-  }catch(_){
-
-    return false;
-
-  }
-
-}
-
-function getYoutubeId(url){
-
-  try{
-
-    const u =
-      new URL(url);
-
-    const host =
-      u.hostname
+      parsed.hostname
         .toLowerCase();
 
     if(
@@ -1428,65 +1406,86 @@ function getYoutubeId(url){
       )
     ){
 
-      return u.pathname
+      return parsed.pathname
         .replace("/","")
-        .split("/")[0] ||
-        null;
+        .split("/")[0];
 
     }
 
-    if(
-      u.searchParams.get("v")
-    ){
-
-      return u.searchParams.get(
+    const video =
+      parsed.searchParams.get(
         "v"
       );
+
+    if(video){
+
+      return video;
 
     }
 
     const parts =
-      u.pathname
+      parsed.pathname
         .split("/")
         .filter(Boolean);
 
-    const shortsIndex =
-      parts.indexOf(
-        "shorts"
-      );
-
-    if(
-      shortsIndex >= 0 &&
-      parts[shortsIndex+1]
-    ){
-
-      return parts[
-        shortsIndex+1
-      ];
-
-    }
-
-    const embedIndex =
+    const embed =
       parts.indexOf(
         "embed"
       );
 
     if(
-      embedIndex >= 0 &&
-      parts[embedIndex+1]
+      embed >= 0 &&
+      parts[embed + 1]
     ){
 
       return parts[
-        embedIndex+1
+        embed + 1
       ];
 
     }
 
-    return null;
+    const shorts =
+      parts.indexOf(
+        "shorts"
+      );
 
-  }catch(_){
+    if(
+      shorts >= 0 &&
+      parts[shorts + 1]
+    ){
 
-    return null;
+      return parts[
+        shorts + 1
+      ];
+
+    }
+
+  }catch(error){}
+
+  return null;
+
+}
+
+
+function validYoutube(
+  url
+){
+
+  try{
+
+    const host =
+      new URL(url)
+        .hostname
+        .toLowerCase();
+
+    return (
+      host.includes("youtube.com") ||
+      host.includes("youtu.be")
+    );
+
+  }catch(error){
+
+    return false;
 
   }
 
@@ -1494,7 +1493,7 @@ function getYoutubeId(url){
 
 
 /* ============================================================
-   CARGAR MÚSICA
+   OBTENER MÚSICA
    ============================================================ */
 
 async function getMusic(
@@ -1506,62 +1505,56 @@ async function getMusic(
     (monthIndex + 1) +
     "/";
 
-  const items =
-    await listStorage(
+  const files =
+    await listFiles(
       prefix
     );
 
   const jsonFiles =
-    items
-
+    files
       .filter(
-        item =>
-          item &&
-          item.name &&
+        file =>
+          file.name &&
           /\.json$/i.test(
-            item.name
+            file.name
           )
       )
-
       .sort(
         (a,b)=>
-          String(
-            b.name
-          ).localeCompare(
-            String(a.name)
-          )
+          String(b.name)
+            .localeCompare(
+              String(a.name)
+            )
       );
 
-  if(
-    !jsonFiles.length
-  ){
+  if(!jsonFiles.length){
 
     return null;
 
   }
 
   for(
-    const item of jsonFiles
+    const file of jsonFiles
   ){
 
     try{
 
       const path =
         prefix +
-        item.name;
+        file.name;
 
       const response =
         await fetch(
-          publicStorageUrl(
-            path
-          ),
+          publicUrl(path),
           {
             cache:"no-store"
           }
         );
 
       if(!response.ok){
+
         continue;
+
       }
 
       const data =
@@ -1572,17 +1565,11 @@ async function getMusic(
         data.url
       ){
 
-        return {
-          url:data.url,
-          title:
-            data.title ||
-            "Nuestra canción",
-          path:path
-        };
+        return data;
 
       }
 
-    }catch(_){}
+    }catch(error){}
 
   }
 
@@ -1604,17 +1591,17 @@ async function saveMusic(){
 
   const button =
     document.getElementById(
-      "saveMusicBtn"
+      "saveMusicButton"
     );
 
   const url =
     input.value.trim();
 
   if(
-    !isYoutubeUrl(url)
+    !validYoutube(url)
   ){
 
-    toast(
+    showToast(
       "Pega un enlace válido de YouTube."
     );
 
@@ -1631,16 +1618,10 @@ async function saveMusic(){
   try{
 
     const data = {
-
       url:url,
-
-      title:
-        "Nuestra canción",
-
       savedAt:
         new Date()
           .toISOString()
-
     };
 
     const path =
@@ -1651,10 +1632,10 @@ async function saveMusic(){
       "-" +
       Math.random()
         .toString(36)
-        .slice(2,7) +
+        .substring(2,7) +
       ".json";
 
-    const body =
+    const blob =
       new Blob(
         [
           JSON.stringify(
@@ -1669,21 +1650,22 @@ async function saveMusic(){
         }
       );
 
-    await uploadStorage(
+    await uploadFile(
       path,
-      body,
+      blob,
       "application/json"
     );
 
-    input.value = "";
+    input.value =
+      "";
 
-    toast(
-      "Canción guardada correctamente 🎵"
+    showToast(
+      "¡Canción guardada correctamente! 🎵"
     );
 
     await renderMonthPanel();
 
-    await updateMonthStatuses();
+    await updateStatuses();
 
   }catch(error){
 
@@ -1691,8 +1673,8 @@ async function saveMusic(){
       error
     );
 
-    toast(
-      "No se pudo guardar la canción. Detalle: " +
+    showToast(
+      "No se pudo guardar la canción: " +
       error.message
     );
 
@@ -1710,7 +1692,7 @@ async function saveMusic(){
 
 
 /* ============================================================
-   PANEL DEL MES
+   MOSTRAR PANEL
    ============================================================ */
 
 async function renderMonthPanel(){
@@ -1721,39 +1703,22 @@ async function renderMonthPanel(){
     );
 
   panel.innerHTML = `
-
     <div class="loading">
-
-      Cargando recuerdos de
-      <strong>
-        ${escapeHtml(
-          MONTH_NAMES[
-            selectedMonth
-          ]
-        )}
-      </strong>...
-
+      Cargando recuerdos...
     </div>
-
   `;
 
   try{
 
-    const results =
-      await Promise.all([
-        getPhotos(
-          selectedMonth
-        ),
-        getMusic(
-          selectedMonth
-        )
-      ]);
-
     const photos =
-      results[0];
+      await getPhotos(
+        selectedMonth
+      );
 
     const music =
-      results[1];
+      await getMusic(
+        selectedMonth
+      );
 
     currentPhotos =
       photos;
@@ -1763,7 +1728,7 @@ async function renderMonthPanel(){
 
     panel.innerHTML = `
 
-      <div class="panel-head">
+      <div class="panel-header">
 
         <div>
 
@@ -1776,7 +1741,7 @@ async function renderMonthPanel(){
           </h3>
 
           <small>
-            Guarda aquí los momentos que quieras conservar.
+            Nuestros recuerdos de este momento.
           </small>
 
         </div>
@@ -1784,19 +1749,15 @@ async function renderMonthPanel(){
       </div>
 
 
-      <div>
+      <div style="margin-top:18px">
 
         <strong>
-          Agregar fotos
+          📷 Agregar fotografías
         </strong>
 
-        <p
-          class="section-intro"
-          style="margin:5px 0 10px;font-size:.9rem">
-
-          Puedes seleccionar varias fotos.
-          Se guardarán en la nube.
-
+        <p class="intro">
+          Selecciona una o varias fotografías.
+          Se guardarán en nuestra nube.
         </p>
 
         <input
@@ -1809,8 +1770,8 @@ async function renderMonthPanel(){
         <div class="actions">
 
           <button
-            class="btn btn-primary"
-            id="savePhotosBtn">
+            class="btn primary"
+            id="savePhotosButton">
 
             Guardar fotos en la nube
 
@@ -1819,15 +1780,13 @@ async function renderMonthPanel(){
           ${
             photos.length
               ? `
-
                 <button
-                  class="btn btn-soft"
-                  id="slideshowBtn">
+                  class="btn secondary"
+                  id="slideshowButton">
 
-                  Ver fotos como presentación
+                  ▶ Ver presentación
 
                 </button>
-
               `
               : ""
           }
@@ -1837,24 +1796,23 @@ async function renderMonthPanel(){
       </div>
 
 
-      <div class="music-box">
+      <div class="music">
 
         <div class="music-title">
           🎵 Música de este mes
         </div>
 
-        <div class="field">
+        <div class="music-row">
 
           <input
             id="youtubeInput"
             type="url"
             placeholder="Pega aquí el enlace de YouTube"
-            autocomplete="off"
           >
 
           <button
-            class="btn btn-primary"
-            id="saveMusicBtn">
+            class="btn primary"
+            id="saveMusicButton">
 
             Guardar canción
 
@@ -1864,84 +1822,56 @@ async function renderMonthPanel(){
 
         ${
           music
-
             ? `
 
-              <div
-                class="music-box"
-                style="margin-top:14px;background:#fffafd">
+              <div class="music-link">
 
-                <div class="music-title">
-                  Canción guardada
-                </div>
+                🎵 Canción guardada:<br>
 
-                <div class="music-link">
-                  ${escapeHtml(
+                ${escapeHtml(
+                  music.url
+                )}
+
+              </div>
+
+              <div class="actions">
+
+                <button
+                  class="btn secondary"
+                  id="openYoutube">
+
+                  Abrir en YouTube
+
+                </button>
+
+                ${
+                  youtubeId(
                     music.url
-                  )}
-                </div>
-
-                <div class="music-actions">
-
-                  <button
-                    class="btn btn-soft"
-                    id="openYoutubeBtn">
-
-                    Abrir en YouTube
-
-                  </button>
-
-                  ${
-                    getYoutubeId(
-                      music.url
-                    )
-
+                  )
                     ? `
-
                       <button
-                        class="btn btn-dark"
-                        id="playYoutubeBtn">
+                        class="btn dark"
+                        id="playYoutube">
 
                         Reproducir aquí
 
                       </button>
-
                     `
                     : ""
-                  }
-
-                </div>
-
-                ${
-                  getYoutubeId(
-                    music.url
-                  )
-
-                  ? `
-
-                    <div
-                      id="youtubePlayer"
-                      style="display:none;margin-top:14px">
-
-                    </div>
-
-                  `
-                  : ""
                 }
 
               </div>
 
+              <div
+                id="youtubePlayer"
+                style="display:none">
+              </div>
+
             `
-
             : `
-
-              <p
-                style="color:var(--muted);font-size:.9rem;margin:12px 0 0">
-
+              <p class="intro">
                 Todavía no hay una canción guardada para este mes.
-
               </p>
-
             `
         }
 
@@ -1956,30 +1886,27 @@ async function renderMonthPanel(){
 
         ${
           photos.length
-
             ? `
 
               <div class="collage">
 
                 ${photos.map(
-                  (photo,i)=>`
+                  (photo,index)=>`
 
                     <button
                       class="photo"
-                      onclick="openSlideshow(${i})"
-                      title="Abrir foto"
-                      style="border:0;padding:0">
+                      onclick="openSlideshow(${index})">
 
                       <img
                         src="${escapeHtml(
                           photo.url
                         )}"
-                        alt="Recuerdo ${i+1}"
+                        alt="Recuerdo ${index+1}"
                         loading="lazy"
                       >
 
                       <span class="photo-label">
-                        Foto ${i+1}
+                        Foto ${index+1}
                       </span>
 
                     </button>
@@ -1990,12 +1917,9 @@ async function renderMonthPanel(){
               </div>
 
             `
-
             : `
 
-              <div
-                class="empty"
-                style="margin-top:12px">
+              <div class="empty">
 
                 Todavía no hay fotos en este mes. ❤️
 
@@ -2011,23 +1935,17 @@ async function renderMonthPanel(){
 
     document
       .getElementById(
-        "savePhotosBtn"
+        "savePhotosButton"
       )
       ?.addEventListener(
         "click",
-        ()=>{
-          savePhotosToCloud(
-            document.getElementById(
-              "photoInput"
-            ).files
-          );
-        }
+        savePhotos
       );
 
 
     document
       .getElementById(
-        "slideshowBtn"
+        "slideshowButton"
       )
       ?.addEventListener(
         "click",
@@ -2039,7 +1957,7 @@ async function renderMonthPanel(){
 
     document
       .getElementById(
-        "saveMusicBtn"
+        "saveMusicButton"
       )
       ?.addEventListener(
         "click",
@@ -2049,12 +1967,11 @@ async function renderMonthPanel(){
 
     document
       .getElementById(
-        "openYoutubeBtn"
+        "openYoutube"
       )
       ?.addEventListener(
         "click",
         ()=>{
-
           if(
             currentMusic &&
             currentMusic.url
@@ -2062,41 +1979,28 @@ async function renderMonthPanel(){
 
             window.open(
               currentMusic.url,
-              "_blank",
-              "noopener,noreferrer"
+              "_blank"
             );
 
           }
-
         }
       );
 
 
     document
       .getElementById(
-        "playYoutubeBtn"
+        "playYoutube"
       )
       ?.addEventListener(
         "click",
-        showYoutubePlayer
+        playYoutube
       );
-
 
   }catch(error){
 
     console.error(
+      "Error cargando mes:",
       error
-    );
-
-    /*
-      No ponemos "Sin conexión"
-      simplemente porque una carpeta
-      esté vacía.
-    */
-
-    setSync(
-      false,
-      "No se pudo conectar"
     );
 
     panel.innerHTML = `
@@ -2107,13 +2011,11 @@ async function renderMonthPanel(){
           No se pudieron cargar los recuerdos.
         </strong>
 
-        <p style="margin-bottom:0">
-
+        <p>
           Detalle:
           ${escapeHtml(
             error.message
           )}
-
         </p>
 
       </div>
@@ -2126,85 +2028,13 @@ async function renderMonthPanel(){
 
 
 /* ============================================================
-   ESTADO DE LOS MESES
+   REPRODUCTOR YOUTUBE
    ============================================================ */
 
-async function updateMonthStatuses(){
-
-  for(
-    let i=0;
-    i<12;
-    i++
-  ){
-
-    const status =
-      document.getElementById(
-        "status-" + i
-      );
-
-    if(!status){
-      continue;
-    }
-
-    try{
-
-      const photos =
-        await getPhotos(i);
-
-      const music =
-        await getMusic(i);
-
-      const parts = [];
-
-      if(
-        photos.length
-      ){
-
-        parts.push(
-          photos.length +
-          " foto" +
-          (
-            photos.length === 1
-              ? ""
-              : "s"
-          )
-        );
-
-      }
-
-      if(music){
-
-        parts.push(
-          "música"
-        );
-
-      }
-
-      status.textContent =
-        parts.length
-          ? parts.join(" · ")
-          : "Sin recuerdos todavía";
-
-    }catch(error){
-
-      status.textContent =
-        "Sin comprobar";
-
-    }
-
-  }
-
-}
-
-
-/* ============================================================
-   REPRODUCTOR DE YOUTUBE
-   ============================================================ */
-
-function showYoutubePlayer(){
+function playYoutube(){
 
   const id =
-    getYoutubeId(
+    youtubeId(
       currentMusic?.url ||
       ""
     );
@@ -2233,23 +2063,24 @@ function showYoutubePlayer(){
         position:relative;
         width:100%;
         padding-top:56.25%;
-        overflow:hidden;
+        margin-top:15px;
         border-radius:16px;
+        overflow:hidden;
         background:#000
       ">
 
       <iframe
         src="https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1"
-        title="Reproductor de YouTube"
+        title="YouTube"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
         style="
           position:absolute;
           inset:0;
           width:100%;
           height:100%;
           border:0
-        "
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen>
+        ">
       </iframe>
 
     </div>
@@ -2260,7 +2091,80 @@ function showYoutubePlayer(){
 
 
 /* ============================================================
-   PRESENTACIÓN DE FOTOS
+   ESTADOS DE MESES
+   ============================================================ */
+
+async function updateStatuses(){
+
+  for(
+    let i=0;
+    i<12;
+    i++
+  ){
+
+    const element =
+      document.getElementById(
+        "month-status-" + i
+      );
+
+    if(!element){
+
+      continue;
+
+    }
+
+    try{
+
+      const photos =
+        await getPhotos(i);
+
+      const music =
+        await getMusic(i);
+
+      const status = [];
+
+      if(
+        photos.length
+      ){
+
+        status.push(
+          photos.length +
+          (
+            photos.length === 1
+              ? " foto"
+              : " fotos"
+          )
+        );
+
+      }
+
+      if(music){
+
+        status.push(
+          "música"
+        );
+
+      }
+
+      element.textContent =
+        status.length
+          ? status.join(" · ")
+          : "Sin recuerdos todavía";
+
+    }catch(error){
+
+      element.textContent =
+        "Sin comprobar";
+
+    }
+
+  }
+
+}
+
+
+/* ============================================================
+   PRESENTACIÓN
    ============================================================ */
 
 function openSlideshow(
@@ -2271,8 +2175,8 @@ function openSlideshow(
     !currentPhotos.length
   ){
 
-    toast(
-      "Este mes todavía no tiene fotos."
+    showToast(
+      "Todavía no hay fotos."
     );
 
     return;
@@ -2280,49 +2184,33 @@ function openSlideshow(
   }
 
   slideIndex =
-    Math.max(
-      0,
-      Math.min(
-        index,
-        currentPhotos.length - 1
-      )
-    );
+    index;
 
-  const modal =
-    document.getElementById(
+  document
+    .getElementById(
       "slideshowModal"
+    )
+    .classList.add(
+      "show"
     );
-
-  modal.classList.add(
-    "show"
-  );
-
-  modal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
 
   updateSlide();
 
 }
 
+
 function closeSlideshow(){
 
-  const modal =
-    document.getElementById(
+  document
+    .getElementById(
       "slideshowModal"
+    )
+    .classList.remove(
+      "show"
     );
 
-  modal.classList.remove(
-    "show"
-  );
-
-  modal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
 }
+
 
 function updateSlide(){
 
@@ -2332,7 +2220,9 @@ function updateSlide(){
     ];
 
   if(!photo){
+
     return;
+
   }
 
   document.getElementById(
@@ -2343,18 +2233,23 @@ function updateSlide(){
   document.getElementById(
     "slideCounter"
   ).textContent =
-    (slideIndex + 1) +
+    (
+      slideIndex + 1
+    ) +
     " / " +
     currentPhotos.length;
 
 }
+
 
 function nextSlide(){
 
   if(
     !currentPhotos.length
   ){
+
     return;
+
   }
 
   slideIndex =
@@ -2367,12 +2262,15 @@ function nextSlide(){
 
 }
 
-function prevSlide(){
+
+function previousSlide(){
 
   if(
     !currentPhotos.length
   ){
+
     return;
+
   }
 
   slideIndex =
@@ -2389,7 +2287,7 @@ function prevSlide(){
 
 
 /* ============================================================
-   BOTONES DE PRESENTACIÓN
+   BOTONES MODAL
    ============================================================ */
 
 document
@@ -2401,6 +2299,7 @@ document
     closeSlideshow
   );
 
+
 document
   .getElementById(
     "nextSlide"
@@ -2410,14 +2309,16 @@ document
     nextSlide
   );
 
+
 document
   .getElementById(
     "prevSlide"
   )
   .addEventListener(
     "click",
-    prevSlide
+    previousSlide
   );
+
 
 document
   .getElementById(
@@ -2439,19 +2340,19 @@ document
     }
   );
 
+
 document.addEventListener(
   "keydown",
   event=>{
 
-    const modal =
-      document.getElementById(
-        "slideshowModal"
-      );
-
     if(
-      !modal.classList.contains(
-        "show"
-      )
+      !document
+        .getElementById(
+          "slideshowModal"
+        )
+        .classList.contains(
+          "show"
+        )
     ){
 
       return;
@@ -2481,7 +2382,7 @@ document.addEventListener(
       "ArrowLeft"
     ){
 
-      prevSlide();
+      previousSlide();
 
     }
 
@@ -2490,7 +2391,7 @@ document.addEventListener(
 
 
 /* ============================================================
-   INICIAR PÁGINA
+   INICIAR
    ============================================================ */
 
 async function initialize(){
@@ -2505,38 +2406,39 @@ async function initialize(){
   renderMonths();
 
   /*
-    Probamos la conexión con Supabase.
-    Si funciona, aparece "Sincronizado con la nube".
+    Comprobamos directamente el bucket.
+    Si responde, la página queda sincronizada.
   */
 
   try{
 
-    await listStorage("");
+    await listFiles("");
 
-    setSync(
+    setConnection(
       true,
-      "Sincronizado con la nube"
+      "Sincronizado"
     );
 
   }catch(error){
 
     console.error(
-      "Error de conexión con Supabase:",
+      "Supabase:",
       error
     );
 
-    setSync(
+    setConnection(
       false,
-      "No se pudo conectar"
+      "Sin conexión"
     );
 
   }
 
   await renderMonthPanel();
 
-  await updateMonthStatuses();
+  await updateStatuses();
 
 }
+
 
 initialize();
 
