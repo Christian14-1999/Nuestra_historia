@@ -5,907 +5,644 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#be123c">
 <title>Nuestra historia ❤️</title>
-
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#1f2937;background:linear-gradient(135deg,#fff1f2,#fdf2f8,#eef2ff)}
+button,input{font:inherit}
+header{min-height:400px;padding:70px 20px 50px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;color:white;background:linear-gradient(135deg,#be123c,#ec4899 50%,#7c3aed)}
+.hero{position:relative;z-index:2;animation:rise 1s ease both}.hero h1{font-size:clamp(42px,9vw,82px);line-height:1;margin:0 0 12px}.hero p{font-size:clamp(18px,4vw,25px);max-width:800px;margin:auto}
+.hearts span{position:absolute;font-size:22px;bottom:-40px;opacity:.65;animation:float 7s linear infinite}.hearts span:nth-child(1){left:8%}.hearts span:nth-child(2){left:25%;animation-delay:1.5s}.hearts span:nth-child(3){left:48%;animation-delay:3s}.hearts span:nth-child(4){left:70%;animation-delay:4.5s}.hearts span:nth-child(5){left:88%;animation-delay:2s}
+main{width:min(1050px,92%);margin:auto;padding:38px 0 70px}.card{background:#ffffffe8;border:1px solid #ffffffcc;border-radius:24px;padding:26px;margin:22px 0;box-shadow:0 12px 35px #1f293714}
+.counter{text-align:center}.counter h2{margin-top:0}.count-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.count-box{background:linear-gradient(135deg,#fff1f2,#fce7f3);border-radius:18px;padding:18px 8px}.count-number{font-size:clamp(28px,7vw,46px);font-weight:800;color:#be123c}.count-label{font-size:13px;color:#6b7280}
+.message{text-align:center;line-height:1.8;font-size:17px;color:#4b5563}.message strong{color:#be123c}.section-title{text-align:center;margin:42px 0 18px}.section-title h2{margin:0 0 5px;font-size:30px}.section-title p{margin:0;color:#6b7280}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.month-btn{border:1px solid #fbcfe8;background:white;border-radius:18px;padding:18px;cursor:pointer;text-align:left;transition:.2s;box-shadow:0 7px 18px #1f29350d}.month-btn:hover{transform:translateY(-3px)}.month-btn strong{display:block;color:#be123c;margin-bottom:4px}.month-btn span{font-size:13px;color:#6b7280}
+.month-panel{display:none;animation:rise .45s ease both}.month-panel.active{display:block}.back{border:0;background:#fce7f3;color:#9d174d;border-radius:12px;padding:10px 14px;cursor:pointer;margin-bottom:15px}.month-panel h2{margin:0;color:#9d174d}.hint{color:#6b7280}
+.photo-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}.file-label,.save-btn,.youtube-btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:11px 15px;cursor:pointer;font-weight:700;text-decoration:none}.file-label{background:#fce7f3;color:#9d174d}.save-btn{background:#be123c;color:white}.youtube-btn{background:#dc2626;color:white}input[type=file]{display:none}
+.collage{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;box-shadow:0 8px 18px #0002;animation:photoIn .5s ease both}.photo:nth-child(2n){transform:rotate(1.2deg)}.photo:nth-child(3n){transform:rotate(-1.2deg)}.empty{grid-column:1/-1;text-align:center;color:#9ca3af;padding:30px 10px;border:2px dashed #e5e7eb;border-radius:16px}
+.music-box{text-align:center;background:linear-gradient(135deg,#fff1f2,#fce7f3);padding:20px;border-radius:18px}.music-box h3{margin:0 0 8px;color:#9d174d}.music-box p{color:#6b7280}.music-box .youtube-btn{margin-top:8px}
+.privacy-note{font-size:12px;line-height:1.5;color:#6b7280}footer{text-align:center;color:#6b7280;padding:25px}
 
-body{
- margin:0;
- font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
- color:#1f2937;
- background:linear-gradient(135deg,#fff1f2,#fdf2f8,#eef2ff);
-}
-
-button,input,select{font:inherit}
-
-#gate{
- min-height:100vh;
- display:flex;
+/* VISOR DE FOTOS */
+.slideshow-modal{
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ display:none;
  align-items:center;
  justify-content:center;
- padding:24px;
- background:
- radial-gradient(circle at 20% 20%,#fb718544,transparent 30%),
- radial-gradient(circle at 80% 80%,#a78bfa44,transparent 30%),
- #fff7fb;
+ background:rgba(0,0,0,.92);
+ padding:30px 55px;
 }
-
-.gate-card{
- width:min(430px,100%);
- background:#fffffff2;
- backdrop-filter:blur(14px);
- border-radius:28px;
- padding:34px 26px;
- text-align:center;
- box-shadow:0 20px 60px #1f293726;
- animation:rise .8s ease both;
-}
-
-.logo{
- font-size:64px;
- animation:beat 1.5s infinite;
-}
-
-.gate-card h1{margin:8px 0}
-.gate-card p{color:#6b7280}
-
-.gate-card input{
- width:100%;
- padding:14px;
- border:1px solid #e5e7eb;
- border-radius:14px;
- text-align:center;
- letter-spacing:2px;
- outline:0;
-}
-
-.primary{
- width:100%;
- border:0;
- border-radius:14px;
- padding:14px;
- margin-top:12px;
- color:white;
- background:linear-gradient(135deg,#fb7185,#ec4899);
- font-weight:700;
- cursor:pointer;
-}
-
-.error{
- color:#dc2626!important;
- min-height:22px;
-}
-
-header{
- min-height:400px;
- padding:70px 20px 50px;
+.slideshow-modal.active{display:flex}
+.slide-content{
+ width:min(900px,90vw);
+ height:min(82vh,800px);
  display:flex;
+ flex-direction:column;
  align-items:center;
  justify-content:center;
- text-align:center;
- position:relative;
- overflow:hidden;
- color:white;
- background:linear-gradient(135deg,#be123c,#ec4899 50%,#7c3aed);
-}
-
-.hero{
- position:relative;
- z-index:2;
- animation:rise 1s ease both;
-}
-
-.hero h1{
- font-size:clamp(42px,9vw,82px);
- line-height:1;
- margin:0 0 12px;
-}
-
-.hero p{
- font-size:clamp(18px,4vw,25px);
- max-width:800px;
- margin:auto;
-}
-
-.hearts span{
- position:absolute;
- font-size:22px;
- bottom:-40px;
- opacity:.65;
- animation:float 7s linear infinite;
-}
-
-.hearts span:nth-child(1){left:8%}
-.hearts span:nth-child(2){left:25%;animation-delay:1.5s}
-.hearts span:nth-child(3){left:48%;animation-delay:3s}
-.hearts span:nth-child(4){left:70%;animation-delay:4.5s}
-.hearts span:nth-child(5){left:88%;animation-delay:2s}
-
-main{
- width:min(1050px,92%);
- margin:auto;
- padding:38px 0 70px;
-}
-
-.card{
- background:#ffffffe8;
- border:1px solid #ffffffcc;
- border-radius:24px;
- padding:26px;
- margin:22px 0;
- box-shadow:0 12px 35px #1f293714;
-}
-
-.counter{text-align:center}
-.counter h2{margin-top:0}
-
-.count-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
-}
-
-.count-box{
- background:linear-gradient(135deg,#fff1f2,#fce7f3);
- border-radius:18px;
- padding:18px 8px;
-}
-
-.count-number{
- font-size:clamp(28px,7vw,46px);
- font-weight:800;
- color:#be123c;
-}
-
-.count-label{
- font-size:13px;
- color:#6b7280;
-}
-
-.message{
- text-align:center;
- line-height:1.8;
- font-size:17px;
- color:#4b5563;
-}
-
-.message strong{color:#be123c}
-
-.section-title{
- text-align:center;
- margin:42px 0 18px;
-}
-
-.section-title h2{
- margin:0 0 5px;
- font-size:30px;
-}
-
-.section-title p{
- margin:0;
- color:#6b7280;
-}
-
-.months{
- display:grid;
- grid-template-columns:repeat(3,1fr);
  gap:14px;
 }
-
-.month-btn{
- border:1px solid #fbcfe8;
- background:white;
- border-radius:18px;
- padding:18px;
- cursor:pointer;
- text-align:left;
- transition:.2s;
- box-shadow:0 7px 18px #1f29350d;
+.slide-content img{
+ max-width:100%;
+ max-height:76vh;
+ width:auto;
+ height:auto;
+ object-fit:contain;
+ border-radius:14px;
+ box-shadow:0 15px 50px rgba(0,0,0,.45);
+ animation:slideIn .3s ease both;
 }
-
-.month-btn:hover{
- transform:translateY(-3px);
-}
-
-.month-btn strong{
- display:block;
- color:#be123c;
- margin-bottom:4px;
-}
-
-.month-btn span{
- font-size:13px;
- color:#6b7280;
-}
-
-.month-panel{
- display:none;
- animation:rise .45s ease both;
-}
-
-.month-panel.active{
- display:block;
-}
-
-.back{
- border:0;
- background:#fce7f3;
- color:#9d174d;
- border-radius:12px;
- padding:10px 14px;
- cursor:pointer;
- margin-bottom:15px;
-}
-
-.month-panel h2{
- margin:0;
- color:#9d174d;
-}
-
-.hint{
- color:#6b7280;
-}
-
-.photo-controls,
-.music-list{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
- align-items:center;
- margin:18px 0;
-}
-
-.file-label,
-.save-btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- border:0;
- border-radius:12px;
- padding:11px 15px;
- cursor:pointer;
- font-weight:700;
-}
-
-.file-label{
- background:#fce7f3;
- color:#9d174d;
-}
-
-.save-btn{
- background:#be123c;
+.slide-counter{
  color:white;
+ font-weight:700;
+ background:rgba(255,255,255,.12);
+ padding:7px 13px;
+ border-radius:20px;
 }
-
-input[type=file]{
- display:none;
+.slide-close{
+ position:absolute;
+ top:18px;
+ right:22px;
+ width:46px;
+ height:46px;
+ border:0;
+ border-radius:50%;
+ background:rgba(255,255,255,.15);
+ color:white;
+ font-size:34px;
+ line-height:1;
+ cursor:pointer;
 }
-
-.collage{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
-}
-
-.photo{
- width:100%;
- aspect-ratio:1;
- object-fit:cover;
+.slide-arrow{
+ position:absolute;
+ top:50%;
+ transform:translateY(-50%);
+ width:48px;
+ height:64px;
+ border:0;
  border-radius:16px;
- box-shadow:0 8px 18px #0002;
- animation:photoIn .5s ease both;
+ background:rgba(255,255,255,.14);
+ color:white;
+ font-size:50px;
+ line-height:1;
+ cursor:pointer;
 }
-
-.photo:nth-child(2n){
- transform:rotate(1.2deg);
+.slide-prev{left:14px}
+.slide-next{right:14px}
+@keyframes slideIn{
+ from{opacity:0;transform:scale(.96)}
+ to{opacity:1;transform:scale(1)}
 }
-
-.photo:nth-child(3n){
- transform:rotate(-1.2deg);
-}
-
-.empty{
- grid-column:1/-1;
- text-align:center;
- color:#9ca3af;
- padding:30px 10px;
- border:2px dashed #e5e7eb;
- border-radius:16px;
-}
-
-.music-list select{
- flex:1;
- min-width:200px;
- padding:11px;
- border:1px solid #e5e7eb;
- border-radius:12px;
- background:white;
-}
-
-.music-list audio{
- width:100%;
- margin-top:8px;
-}
-
-.privacy-note{
- font-size:12px;
- line-height:1.5;
- color:#6b7280;
-}
-
-footer{
- text-align:center;
- color:#6b7280;
- padding:25px;
-}
-
-@keyframes rise{
- from{opacity:0;transform:translateY(25px)}
- to{opacity:1;transform:none}
-}
-
-@keyframes beat{
- 0%,100%{transform:scale(1)}
- 15%{transform:scale(1.12)}
- 30%{transform:scale(1)}
-}
-
-@keyframes float{
- 0%{transform:translateY(0);opacity:0}
- 15%{opacity:.65}
- 100%{transform:translateY(-480px) rotate(25deg);opacity:0}
-}
-
-@keyframes photoIn{
- from{opacity:0;transform:scale(.85)}
- to{opacity:1}
-}
-
-@media(max-width:700px){
- .months{grid-template-columns:repeat(2,1fr)}
- .card{padding:20px}
-}
-
-@media(max-width:430px){
- .months{grid-template-columns:1fr}
- .collage{grid-template-columns:repeat(2,1fr)}
- header{min-height:360px}
-}
+@keyframes rise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@keyframes float{0%{transform:translateY(0);opacity:0}15%{opacity:.65}100%{transform:translateY(-480px) rotate(25deg);opacity:0}}
+@keyframes photoIn{from{opacity:0;transform:scale(.85)}to{opacity:1}}
+@media(max-width:700px){.months{grid-template-columns:repeat(2,1fr)}.card{padding:20px}}
+@media(max-width:430px){.months{grid-template-columns:1fr}.collage{grid-template-columns:repeat(2,1fr)}header{min-height:360px}}
 </style>
 </head>
-
 <body>
 
-<section id="gate">
-<div class="gate-card">
-
-<div class="logo">❤️</div>
-
-<h1>Nuestra historia</h1>
-
-<p>Introduce la contraseña para entrar.</p>
-
-<form id="loginForm">
-
-<input
- id="password"
- type="password"
- inputmode="numeric"
- autocomplete="off"
- placeholder="Contraseña">
-
-<button class="primary" type="submit">
-Entrar
-</button>
-
-</form>
-
-<p id="loginError" class="error"></p>
-
-</div>
-</section>
-
-
-<div id="app">
-
 <header>
-
 <div class="hearts" aria-hidden="true">
-<span>❤️</span>
-<span>💗</span>
-<span>💕</span>
-<span>❤️</span>
-<span>💖</span>
+<span>❤️</span><span>💗</span><span>💕</span><span>❤️</span><span>💖</span>
 </div>
-
 <div class="hero">
-
 <h1>Nuestra historia ❤️</h1>
-
-<p>
-Un pequeño espacio para guardar nuestros recuerdos
-y todo lo bonito que vamos construyendo.
-</p>
-
+<p>Un pequeño espacio para guardar nuestros recuerdos y todo lo bonito que vamos construyendo.</p>
 </div>
 </header>
 
-
 <main>
 
-
 <section class="card counter">
-
 <h2>Tiempo juntos</h2>
-
 <div class="count-grid">
-
 <div class="count-box">
 <div id="years" class="count-number">0</div>
 <div class="count-label">AÑOS</div>
 </div>
-
 <div class="count-box">
 <div id="months" class="count-number">0</div>
 <div class="count-label">MESES</div>
 </div>
-
 <div class="count-box">
 <div id="days" class="count-number">0</div>
 <div class="count-label">DÍAS</div>
 </div>
-
 </div>
 </section>
-
 
 <section class="card message">
-
-<p>
-Quiero que esto sea <strong>un comienzo</strong> de muchos recuerdos,
-momentos, aprendizajes y sonrisas.
-Que podamos acompañarnos en los días buenos y también en los difíciles,
-cuidando siempre lo que estamos construyendo.
-</p>
-
-<p>
-Aquí iremos guardando pequeños pedacitos de nuestra historia
-para poder volver a ellos y recordar todo lo que hemos vivido juntos. ❤️
-</p>
-
+<p>Quiero que esto sea <strong>un comienzo</strong> de muchos recuerdos, momentos, aprendizajes y sonrisas. Que podamos acompañarnos en los días buenos y también en los difíciles, cuidando siempre lo que estamos construyendo.</p>
+<p>Aquí iremos guardando pequeños pedacitos de nuestra historia para poder volver a ellos y recordar todo lo que hemos vivido juntos. ❤️</p>
 </section>
-
 
 <div id="monthsView">
-
 <div class="section-title">
-
 <h2>Nuestros recuerdos</h2>
-
-<p>
-Elige un mes para guardar y ver sus fotos.
-</p>
-
+<p>Elige un mes para guardar y ver sus fotos.</p>
 </div>
-
-
 <section class="card">
-
 <div class="months" id="monthButtons"></div>
-
 </section>
-
 </div>
-
 
 <section id="monthPanel" class="card month-panel">
 
-<button class="back" id="backBtn">
-← Volver a los meses
-</button>
+<button class="back" id="backBtn">← Volver a los meses</button>
 
 <h2 id="selectedMonthTitle"></h2>
-
-<p class="hint">
-Puedes seleccionar hasta 9 fotos y crear tu propio collage.
-</p>
-
+<p id="selectedMonthHint" class="hint"></p>
 
 <div class="photo-controls">
 
 <label class="file-label">
-
 📷 Elegir fotos
-
-<input
- id="photoInput"
- type="file"
- accept="image/*"
- multiple>
-
+<input id="photoInput" type="file" accept="image/*" multiple>
 </label>
-
 
 <button class="save-btn" id="savePhotos">
 Guardar fotos
 </button>
 
-</div>
+<button class="save-btn" id="slideshowBtn" style="display:none">
+▶ Ver fotos una por una
+</button>
 
+</div>
 
 <div id="collage" class="collage"></div>
 
-<p class="privacy-note">
-Las fotos se guardan localmente en este navegador.
-No se suben a GitHub.
-</p>
+<div id="musicBox" class="music-box" style="margin-top:25px">
 
-</section>
+<h3>🎵 Música de este mes</h3>
 
-
-<section class="card">
-
-<div class="section-title" style="margin:0 0 18px">
-
-<h2>🎵 Nuestra música</h2>
-
-<p>
-Puedes elegir entre varios archivos de música desde este dispositivo.
-</p>
-
-</div>
-
-
-<div class="music-list">
-
-<label class="file-label">
-
-🎶 Agregar música
+<p>Coloca aquí el enlace de YouTube de la canción que quieras para este mes.</p>
 
 <input
- id="musicInput"
- type="file"
- accept="audio/*"
- multiple>
+id="youtubeInput"
+type="url"
+placeholder="Pega aquí el enlace de YouTube"
+style="width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:12px;outline:0">
 
-</label>
+<p
+id="musicSaved"
+style="font-size:13px;color:#16a34a;min-height:20px;margin:8px 0">
+</p>
 
-
-<select id="musicSelect">
-
-<option value="">
-Selecciona una canción
-</option>
-
-</select>
-
-
-<audio id="audioPlayer" controls></audio>
+<a
+id="youtubeLink"
+class="youtube-btn"
+href="#"
+target="_blank"
+rel="noopener noreferrer"
+style="display:none">
+▶ Escuchar en YouTube
+</a>
 
 </div>
 
-
 <p class="privacy-note">
-La música seleccionada es local y no se publica en la página.
+Las fotos se guardan en Supabase para que puedan verse desde ambos teléfonos.
+Los enlaces de YouTube se guardan en este dispositivo por ahora.
 </p>
 
 </section>
-
 </main>
 
+<!-- VISOR DE FOTOS -->
+
+<div id="slideshowModal" class="slideshow-modal" aria-hidden="true">
+
+<button
+id="closeSlideshow"
+class="slide-close"
+aria-label="Cerrar">
+×
+</button>
+
+<button
+id="prevSlide"
+class="slide-arrow slide-prev"
+aria-label="Foto anterior">
+‹
+</button>
+
+<div class="slide-content">
+
+<img id="slideImage" src="" alt="Recuerdo">
+
+<div id="slideCounter" class="slide-counter"></div>
+
+</div>
+
+<button
+id="nextSlide"
+class="slide-arrow slide-next"
+aria-label="Foto siguiente">
+›
+</button>
+
+</div>
 
 <footer>
 Hecho con cariño para guardar nuestros recuerdos. ❤️
 </footer>
 
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* CONTRASEÑA */
+/* =========================
+   FECHA Y CONTADOR
+   ========================= */
 
-const PASSWORD = "05-09-2026";
+const START_DATE = new Date(2026,8,5,17,50,0);
 
+function calendarDifference(start,end){
 
-/* FECHA DE INICIO */
+ let years=end.getFullYear()-start.getFullYear();
+ let months=end.getMonth()-start.getMonth();
+ let days=end.getDate()-start.getDate();
 
-const START_DATE = new Date(
- 2026,
- 8,
- 5,
- 17,
- 50,
- 0
-);
+ if(days<0){
+  months--;
+  days+=new Date(
+   end.getFullYear(),
+   end.getMonth(),
+   0
+  ).getDate();
+ }
 
+ if(months<0){
+  years--;
+  months+=12;
+ }
 
-/* SISTEMA DE CONTRASEÑA */
-
-const gate =
-document.getElementById("gate");
-
-const app =
-document.getElementById("app");
-
-const loginForm =
-document.getElementById("loginForm");
-
-const passwordInput =
-document.getElementById("password");
-
-const loginError =
-document.getElementById("loginError");
-
-
-if(
- sessionStorage.getItem("nuestraHistoriaAccess")
- === "ok"
-){
- showApp();
+ return years<0
+  ? {years:0,months:0,days:0}
+  : {years,months,days};
 }
-
-
-loginForm.addEventListener(
- "submit",
- function(e){
-
- e.preventDefault();
-
- if(
- passwordInput.value === PASSWORD
- ){
-
- sessionStorage.setItem(
-  "nuestraHistoriaAccess",
-  "ok"
- );
-
- showApp();
-
- }else{
-
- loginError.textContent =
- "Contraseña incorrecta.";
-
- passwordInput.value = "";
-
- passwordInput.focus();
-
- }
-
- }
-);
-
-
-function showApp(){
-
- gate.style.display = "none";
-
- app.style.display = "block";
-
-}
-
-
-/* CONTADOR */
-
-function calendarDifference(
- start,
- end
-){
-
- let years =
- end.getFullYear() -
- start.getFullYear();
-
- let months =
- end.getMonth() -
- start.getMonth();
-
- let days =
- end.getDate() -
- start.getDate();
-
-
- if(days < 0){
-
- months--;
-
- days += new Date(
-  end.getFullYear(),
-  end.getMonth(),
-  0
- ).getDate();
-
- }
-
-
- if(months < 0){
-
- years--;
-
- months += 12;
-
- }
-
-
- if(years < 0){
-
- return {
-  years:0,
-  months:0,
-  days:0
- };
-
- }
-
-
- return {
-  years,
-  months,
-  days
- };
-
-}
-
 
 function updateCounter(){
 
- const d =
- calendarDifference(
+ const d=calendarDifference(
   START_DATE,
   new Date()
  );
 
- document.getElementById(
-  "years"
- ).textContent = d.years;
-
- document.getElementById(
-  "months"
- ).textContent = d.months;
-
- document.getElementById(
-  "days"
- ).textContent = d.days;
-
+ document.getElementById("years").textContent=d.years;
+ document.getElementById("months").textContent=d.months;
+ document.getElementById("days").textContent=d.days;
 }
-
 
 updateCounter();
 
-setInterval(
- updateCounter,
- 60000
+setInterval(updateCounter,60000);
+
+
+/* =========================
+   MESES
+   ========================= */
+
+const names=[
+ "Primer mes",
+ "Segundo mes",
+ "Tercer mes",
+ "Cuarto mes",
+ "Quinto mes",
+ "Sexto mes",
+ "Séptimo mes",
+ "Octavo mes",
+ "Noveno mes",
+ "Décimo mes",
+ "Undécimo mes",
+ "Un año"
+];
+
+const texts=[
+ "El comienzo de nuestra historia y de todos los recuerdos que vendrán.",
+ "Otro pedacito de nuestra historia para guardar.",
+ "Seguimos sumando momentos que merecen ser recordados.",
+ "Un nuevo capítulo de esta historia.",
+ "Más recuerdos, más experiencias y más momentos compartidos.",
+ "Mitad de este primer año de recuerdos.",
+ "Seguimos avanzando y creando nuestra propia historia.",
+ "Otro mes que merece un espacio entre nuestros recuerdos.",
+ "Pequeños momentos que se convierten en grandes recuerdos.",
+ "Seguimos escribiendo esta historia juntos.",
+ "Cada recuerdo hace que esta historia sea más especial.",
+ "Un año de momentos que vale la pena guardar."
+];
+
+
+/*
+ PON AQUÍ LOS ENLACES DE YOUTUBE DE CADA MES.
+
+ Ejemplo:
+ 0: "https://www.youtube.com/watch?v=XXXXXXXXXXX"
+
+ Si todavía no tienes una canción para algún mes, déjalo como "".
+*/
+
+const youtubeMusic=[
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ ""
+];
+
+
+/* =========================
+   ELEMENTOS
+   ========================= */
+
+const monthButtons=document.getElementById("monthButtons");
+const monthsView=document.getElementById("monthsView");
+const monthPanel=document.getElementById("monthPanel");
+const selectedMonthTitle=document.getElementById("selectedMonthTitle");
+const selectedMonthHint=document.getElementById("selectedMonthHint");
+const collage=document.getElementById("collage");
+const photoInput=document.getElementById("photoInput");
+const slideshowBtn=document.getElementById("slideshowBtn");
+
+const youtubeInput=document.getElementById("youtubeInput");
+const musicSaved=document.getElementById("musicSaved");
+const youtubeLink=document.getElementById("youtubeLink");
+
+const slideshowModal=document.getElementById("slideshowModal");
+const slideImage=document.getElementById("slideImage");
+const slideCounter=document.getElementById("slideCounter");
+const closeSlideshow=document.getElementById("closeSlideshow");
+const prevSlide=document.getElementById("prevSlide");
+const nextSlide=document.getElementById("nextSlide");
+
+let slideshowImages=[];
+let slideshowIndex=0;
+
+let selectedMonth=null;
+let selectedFiles=[];
+
+
+names.forEach((name,index)=>{
+
+ const b=document.createElement("button");
+
+ b.className="month-btn";
+
+ b.innerHTML=
+ `<strong>${name}</strong><span>${texts[index]}</span>`;
+
+ b.onclick=()=>openMonth(index);
+
+ monthButtons.appendChild(b);
+
+});
+
+
+/* =========================
+   SUPABASE PARA FOTOS COMPARTIDAS
+   ========================= */
+
+const SUPABASE_URL=
+"https://qrqshvszanznyjudyotk.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY=
+"sb_publishable_XbVYpB_mM2MFYecgN6eFOg_lVRmG7q7";
+
+const BUCKET_NAME=
+"nuestra-historia";
+
+const { createClient } = supabase;
+
+const supabaseClient=
+createClient(
+ SUPABASE_URL,
+ SUPABASE_PUBLISHABLE_KEY
 );
 
 
-/* MESES */
+function dataURLToBlob(dataURL){
 
-const names = [
+ const parts=dataURL.split(',');
 
-"Primer mes",
-"Segundo mes",
-"Tercer mes",
-"Cuarto mes",
-"Quinto mes",
-"Sexto mes",
-"Séptimo mes",
-"Octavo mes",
-"Noveno mes",
-"Décimo mes",
-"Undécimo mes",
-"Un año"
+ const mime=
+ (parts[0].match(/:(.*?);/)||[])[1]
+ ||'image/jpeg';
 
-];
+ const binary=atob(parts[1]);
 
+ const bytes=
+ new Uint8Array(binary.length);
 
-const texts = [
+ for(
+  let i=0;
+  i<binary.length;
+  i++
+ ){
+  bytes[i]=binary.charCodeAt(i);
+ }
 
-"El comienzo de nuestra historia y de todos los recuerdos que vendrán.",
-
-"Otro pedacito de nuestra historia para guardar.",
-
-"Seguimos sumando momentos que merecen ser recordados.",
-
-"Un nuevo capítulo de esta historia.",
-
-"Más recuerdos, más experiencias y más momentos compartidos.",
-
-"Mitad de este primer año de recuerdos.",
-
-"Seguimos avanzando y creando nuestra propia historia.",
-
-"Otro mes que merece un espacio entre nuestros recuerdos.",
-
-"Pequeños momentos que se convierten en grandes recuerdos.",
-
-"Seguimos escribiendo esta historia juntos.",
-
-"Cada recuerdo hace que esta historia sea más especial.",
-
-"Un año de momentos que vale la pena guardar."
-
-];
+ return new Blob(
+  [bytes],
+  {type:mime}
+ );
+}
 
 
-const monthButtons =
-document.getElementById("monthButtons");
+async function getPhotos(month){
 
-const monthsView =
-document.getElementById("monthsView");
+ const prefix=`mes-${month+1}`;
 
-const monthPanel =
-document.getElementById("monthPanel");
-
-const selectedMonthTitle =
-document.getElementById("selectedMonthTitle");
-
-const collage =
-document.getElementById("collage");
-
-const photoInput =
-document.getElementById("photoInput");
-
-
-let selectedMonth = null;
-
-let selectedFiles = [];
-
-
-names.forEach(
- (name,index)=>{
-
- const button =
- document.createElement("button");
-
- button.className =
- "month-btn";
-
- button.innerHTML =
- `<strong>${name}</strong>
- <span>${texts[index]}</span>`;
-
- button.onclick =
- ()=>{
-  openMonth(index);
- };
-
- monthButtons.appendChild(
-  button
+ const {
+  data,
+  error
+ }=
+ await supabaseClient
+ .storage
+ .from(BUCKET_NAME)
+ .list(
+  prefix,
+  {
+   limit:100,
+   sortBy:{
+    column:'name',
+    order:'asc'
+   }
+  }
  );
 
+ if(error) throw error;
+
+ return (data||[])
+  .filter(
+   item=>
+    item.name &&
+    /\.jpg$/i.test(item.name)
+  )
+  .map(
+   item=>
+    supabaseClient
+     .storage
+     .from(BUCKET_NAME)
+     .getPublicUrl(
+      `${prefix}/${item.name}`
+     ).data.publicUrl
+  );
+}
+
+
+async function savePhotosToDB(month,images){
+
+ const prefix=`mes-${month+1}`;
+
+ for(
+  let i=0;
+  i<images.length;
+  i++
+ ){
+
+  const blob=
+   dataURLToBlob(images[i]);
+
+  const fileName=
+   `${Date.now()}-${Math.random()
+   .toString(36)
+   .slice(2,9)}.jpg`;
+
+  const path=
+   `${prefix}/${fileName}`;
+
+  const {
+   error
+  }=
+  await supabaseClient
+   .storage
+   .from(BUCKET_NAME)
+   .upload(
+    path,
+    blob,
+    {
+     contentType:'image/jpeg',
+     upsert:false
+    }
+   );
+
+  if(error) throw error;
  }
+}
+
+
+/* Comprime las fotos */
+
+function compressImage(
+ file,
+ maxSize=1600,
+ quality=.82
+){
+
+ return new Promise(
+  (resolve,reject)=>{
+
+   const reader=
+    new FileReader();
+
+   reader.onload=e=>{
+
+    const img=
+     new Image();
+
+    img.onload=()=>{
+
+     let w=img.width;
+     let h=img.height;
+
+     if(
+      w>maxSize ||
+      h>maxSize
+     ){
+
+      const scale=
+       Math.min(
+        maxSize/w,
+        maxSize/h
+       );
+
+      w=Math.round(w*scale);
+      h=Math.round(h*scale);
+     }
+
+     const canvas=
+      document.createElement("canvas");
+
+     canvas.width=w;
+     canvas.height=h;
+
+     const ctx=
+      canvas.getContext("2d");
+
+     ctx.drawImage(
+      img,
+      0,
+      0,
+      w,
+      h
+     );
+
+     resolve(
+      canvas.toDataURL(
+       "image/jpeg",
+       quality
+      )
+     );
+    };
+
+    img.onerror=reject;
+
+    img.src=e.target.result;
+   };
+
+   reader.onerror=reject;
+
+   reader.readAsDataURL(file);
+
+  }
 );
 
-
-function storageKey(index){
-
- return "nuestra_historia_fotos_" + index;
 
 }
 
 
-function openMonth(index){
+async function openMonth(index){
 
- selectedMonth = index;
+ selectedMonth=index;
 
- selectedFiles = [];
+ selectedFiles=[];
 
- photoInput.value = "";
+ photoInput.value="";
 
- selectedMonthTitle.textContent =
- names[index];
+ selectedMonthTitle.textContent=
+  names[index];
 
- monthsView.style.display =
- "none";
+ selectedMonthHint.textContent=
+  texts[index];
 
- monthPanel.classList.add(
- "active"
- );
+ monthsView.style.display="none";
 
- renderSavedPhotos();
+ monthPanel.classList.add("active");
+
+ renderMusic(index);
+
+ await renderSavedPhotos();
 
  window.scrollTo({
   top:0,
@@ -915,78 +652,64 @@ function openMonth(index){
 }
 
 
-document.getElementById(
- "backBtn"
-).onclick = function(){
+document.getElementById("backBtn").onclick=()=>{
 
- monthPanel.classList.remove(
-  "active"
- );
+ monthPanel.classList.remove("active");
 
- monthsView.style.display =
- "block";
+ monthsView.style.display="block";
 
- selectedMonth = null;
+ selectedMonth=null;
 
- selectedFiles = [];
+ selectedFiles=[];
 
 };
 
 
-photoInput.onchange =
- function(){
+photoInput.onchange=()=>{
 
- selectedFiles =
- Array.from(
-  photoInput.files
- ).slice(0,9);
+ selectedFiles=
+  Array.from(
+   photoInput.files
+  ).slice(0,9);
 
  renderPreview();
 
- };
+};
 
 
 function renderPreview(){
 
  if(!selectedFiles.length){
 
- renderSavedPhotos();
+  renderSavedPhotos();
 
- return;
-
+  return;
  }
 
-
- collage.innerHTML = "";
-
+ collage.innerHTML="";
 
  selectedFiles.forEach(
   (file,index)=>{
 
-  const img =
-  document.createElement("img");
+   const img=
+    document.createElement("img");
 
-  img.className =
-  "photo";
+   img.className="photo";
 
-  img.alt =
-  "Vista previa";
+   img.alt="Vista previa";
 
-  img.style.animationDelay =
-  `${index*50}ms`;
+   img.style.animationDelay=
+    `${index*50}ms`;
 
-  const reader =
-  new FileReader();
+   const reader=
+    new FileReader();
 
-  reader.onload =
-  event=>{
-   img.src =
-   event.target.result;
-  };
+   reader.onload=e=>
+    img.src=e.target.result;
 
-  reader.readAsDataURL(file);
+   reader.readAsDataURL(file);
 
-  collage.appendChild(img);
+   collage.appendChild(img);
 
   }
  );
@@ -994,241 +717,396 @@ function renderPreview(){
 }
 
 
-document.getElementById(
- "savePhotos"
-).onclick =
-async function(){
+document.getElementById("savePhotos").onclick=
+async()=>{
 
- if(selectedMonth === null)
- return;
-
+ if(selectedMonth===null)
+  return;
 
  if(!selectedFiles.length){
 
- alert(
-  "Primero selecciona una o más fotos."
- );
+  alert(
+   "Primero selecciona una o más fotos."
+  );
 
- return;
-
+  return;
  }
-
 
  try{
 
- const images =
- await Promise.all(
+  const images=
+   await Promise.all(
+    selectedFiles.map(
+     file=>compressImage(file)
+    )
+   );
 
-  selectedFiles.map(
-   file=>
-   new Promise(
-    (resolve,reject)=>{
+  await savePhotosToDB(
+   selectedMonth,
+   images
+  );
 
-     const reader =
-     new FileReader();
+  selectedFiles=[];
 
-     reader.onload =
-     ()=>{
-      resolve(
-       reader.result
-      );
-     };
+  photoInput.value="";
 
-     reader.onerror =
-     reject;
+  await renderSavedPhotos();
 
-     reader.readAsDataURL(file);
-
-    }
-   )
-  )
-
- );
-
-
- localStorage.setItem(
-  storageKey(selectedMonth),
-  JSON.stringify(images)
- );
-
-
- selectedFiles = [];
-
- photoInput.value = "";
-
- renderSavedPhotos();
-
-
- alert(
-  "Fotos guardadas en este dispositivo. ❤️"
- );
-
+  alert(
+   "¡Fotos guardadas correctamente! ❤️"
+  );
 
  }catch(error){
 
- alert(
-  "No se pudieron guardar las fotos; el navegador puede haber alcanzado su límite de almacenamiento."
- );
+  console.error(error);
 
+  alert(
+   "No se pudieron guardar las fotos. Intenta con menos fotos a la vez o vuelve a cargar la página."
+  );
  }
 
 };
 
 
-function renderSavedPhotos(){
+async function renderSavedPhotos(){
 
- collage.innerHTML = "";
+ collage.innerHTML="";
 
+ slideshowImages=[];
 
- if(selectedMonth === null)
- return;
-
-
- let saved = [];
-
+ if(selectedMonth===null)
+  return;
 
  try{
 
- saved =
- JSON.parse(
-  localStorage.getItem(
-   storageKey(selectedMonth)
-  ) || "[]"
- );
+  const saved=
+   await getPhotos(selectedMonth);
 
- }catch(e){}
+  slideshowImages=
+   saved.slice(0,9);
 
+  slideshowBtn.style.display=
+   slideshowImages.length
+   ? "inline-flex"
+   : "none";
 
- if(!saved.length){
+  if(!saved.length){
 
- collage.innerHTML =
- `<div class="empty">
- Todavía no hay fotos guardadas para este mes.
- </div>`;
+   collage.innerHTML=
+    '<div class="empty">Todavía no hay fotos guardadas para este mes.</div>';
 
- return;
-
- }
-
-
- saved.slice(0,9).forEach(
-  (src,index)=>{
-
-  const img =
-  document.createElement("img");
-
-  img.className =
-  "photo";
-
-  img.src =
-  src;
-
-  img.alt =
-  "Recuerdo";
-
-  img.style.animationDelay =
-  `${index*50}ms`;
-
-  collage.appendChild(img);
-
+   return;
   }
- );
+
+  saved.slice(0,9).forEach(
+   (src,index)=>{
+
+    const img=
+     document.createElement("img");
+
+    img.className="photo";
+
+    img.src=src;
+
+    img.alt="Recuerdo";
+
+    img.style.animationDelay=
+     `${index*50}ms`;
+
+    img.style.cursor="pointer";
+
+    img.onclick=
+     ()=>openSlideshow(index);
+
+    collage.appendChild(img);
+
+   }
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+  slideshowBtn.style.display="none";
+
+  collage.innerHTML=
+   '<div class="empty">No se pudieron cargar las fotos guardadas.</div>';
+ }
 
 }
 
 
-/* MÚSICA */
+/* =========================
+   YOUTUBE POR MES
+   ========================= */
 
-const musicInput =
-document.getElementById("musicInput");
+function musicKey(index){
 
-const musicSelect =
-document.getElementById("musicSelect");
+ return "nuestra_historia_youtube_" + index;
 
-const audioPlayer =
-document.getElementById("audioPlayer");
-
-
-let musicUrls = [];
+}
 
 
-musicInput.onchange =
-function(){
+function normalizeYouTubeUrl(value){
 
- musicUrls.forEach(
-  url=>{
-   URL.revokeObjectURL(url);
+ const v=(value||"").trim();
+
+ if(!v)
+  return "";
+
+ try{
+
+  const u=
+   new URL(v);
+
+  const host=
+   u.hostname
+   .replace(/^www\./,"")
+   .toLowerCase();
+
+  if(
+   host==="youtube.com" ||
+   host==="youtu.be" ||
+   host==="m.youtube.com"
+  ){
+
+   return u.href;
   }
- );
 
- musicUrls = [];
+ }catch(e){}
 
+ return "";
 
- musicSelect.innerHTML =
- `<option value="">
- Selecciona una canción
- </option>`;
+}
 
 
- Array.from(
-  musicInput.files
- ).forEach(
-  (file,index)=>{
+function renderMusic(index){
 
-  const url =
-  URL.createObjectURL(file);
+ const url=
+  localStorage.getItem(
+   musicKey(index)
+  ) || "";
 
-  musicUrls.push(url);
+ youtubeInput.value=url;
+
+ musicSaved.textContent=
+  url
+   ? "✓ Enlace guardado automáticamente en este dispositivo."
+   : "";
+
+ if(url){
+
+  youtubeLink.href=url;
+
+  youtubeLink.style.display=
+   "inline-flex";
+
+ }else{
+
+  youtubeLink.removeAttribute("href");
+
+  youtubeLink.style.display=
+   "none";
+ }
+}
 
 
-  const option =
-  document.createElement("option");
+/* El enlace se guarda automáticamente */
 
-  option.value =
-  index;
+youtubeInput.addEventListener(
+ "input",
+ ()=>{
 
-  option.textContent =
-  file.name;
+  if(selectedMonth===null)
+   return;
 
-  musicSelect.appendChild(
-   option
-  );
+  const value=
+   youtubeInput.value.trim();
 
+  if(!value){
+
+   localStorage.removeItem(
+    musicKey(selectedMonth)
+   );
+
+   musicSaved.textContent="";
+
+   youtubeLink.style.display=
+    "none";
+
+   return;
   }
- );
 
+  const valid=
+   normalizeYouTubeUrl(value);
 
- if(musicUrls.length){
+  if(valid){
 
- musicSelect.value = 0;
+   localStorage.setItem(
+    musicKey(selectedMonth),
+    valid
+   );
 
- audioPlayer.src =
- musicUrls[0];
+   musicSaved.textContent=
+    "✓ Enlace guardado automáticamente.";
+
+   youtubeLink.href=valid;
+
+   youtubeLink.style.display=
+    "inline-flex";
+
+  }else{
+
+   musicSaved.textContent=
+    "Pega un enlace válido de YouTube.";
+
+   youtubeLink.style.display=
+    "none";
+  }
 
  }
-
-};
-
-
-musicSelect.onchange =
-function(){
-
- const index =
- Number(musicSelect.value);
+);
 
 
- if(musicUrls[index]){
+/* =========================
+   PRESENTACIÓN DE FOTOS
+   ========================= */
 
- audioPlayer.src =
- musicUrls[index];
+function updateSlide(){
 
- audioPlayer.play().catch(
-  ()=>{}
+ if(!slideshowImages.length)
+  return;
+
+ slideImage.style.animation="none";
+
+ void slideImage.offsetWidth;
+
+ slideImage.style.animation=
+  "slideIn .3s ease both";
+
+ slideImage.src=
+  slideshowImages[slideshowIndex];
+
+ slideCounter.textContent=
+  `${slideshowIndex+1} / ${slideshowImages.length}`;
+
+}
+
+
+function openSlideshow(index=0){
+
+ if(!slideshowImages.length)
+  return;
+
+ slideshowIndex=index;
+
+ updateSlide();
+
+ slideshowModal.classList.add(
+  "active"
  );
 
- }
+ slideshowModal.setAttribute(
+  "aria-hidden",
+  "false"
+ );
 
-};
+ document.body.style.overflow=
+  "hidden";
+
+}
+
+
+function closeSlideShow(){
+
+ slideshowModal.classList.remove(
+  "active"
+ );
+
+ slideshowModal.setAttribute(
+  "aria-hidden",
+  "true"
+ );
+
+ document.body.style.overflow="";
+
+}
+
+
+function nextPhoto(){
+
+ if(!slideshowImages.length)
+  return;
+
+ slideshowIndex=
+  (slideshowIndex+1)
+  % slideshowImages.length;
+
+ updateSlide();
+
+}
+
+
+function previousPhoto(){
+
+ if(!slideshowImages.length)
+  return;
+
+ slideshowIndex=
+  (slideshowIndex-1+
+   slideshowImages.length)
+  % slideshowImages.length;
+
+ updateSlide();
+
+}
+
+
+slideshowBtn.onclick=
+ ()=>openSlideshow(0);
+
+closeSlideshow.onclick=
+ closeSlideShow;
+
+nextSlide.onclick=
+ nextPhoto;
+
+prevSlide.onclick=
+ previousPhoto;
+
+
+slideshowModal.addEventListener(
+ "click",
+ e=>{
+
+  if(e.target===slideshowModal)
+   closeSlideShow();
+
+ }
+);
+
+
+document.addEventListener(
+ "keydown",
+ e=>{
+
+  if(
+   !slideshowModal.classList
+    .contains("active")
+  )
+   return;
+
+  if(e.key==="Escape")
+   closeSlideShow();
+
+  if(e.key==="ArrowRight")
+   nextPhoto();
+
+  if(e.key==="ArrowLeft")
+   previousPhoto();
+
+ }
+);
 
 </script>
 
