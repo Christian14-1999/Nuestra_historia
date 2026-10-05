@@ -1,2325 +1,2175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#be123c">
-<title>Nuestra historia ❤️</title>
-
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-margin:0;
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-color:#1f2937;
-background:linear-gradient(135deg,#fff1f2,#fdf2f8,#eef2ff)
-}
-
-button,input{font:inherit}
-
-header{
-min-height:400px;
-padding:70px 20px 50px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-overflow:hidden;
-color:white;
-background:linear-gradient(135deg,#be123c,#ec4899 50%,#7c3aed)
-}
-
-.hero{
-position:relative;
-z-index:2;
-animation:rise 1s ease both
-}
-
-.hero h1{
-font-size:clamp(42px,9vw,82px);
-line-height:1;
-margin:0 0 12px
-}
-
-.hero p{
-font-size:clamp(18px,4vw,25px);
-max-width:800px;
-margin:auto
-}
-
-.hearts span{
-position:absolute;
-font-size:22px;
-bottom:-40px;
-opacity:.65;
-animation:float 7s linear infinite
-}
-
-.hearts span:nth-child(1){left:8%}
-.hearts span:nth-child(2){left:25%;animation-delay:1.5s}
-.hearts span:nth-child(3){left:48%;animation-delay:3s}
-.hearts span:nth-child(4){left:70%;animation-delay:4.5s}
-.hearts span:nth-child(5){left:88%;animation-delay:2s}
-
-main{
-width:min(1050px,92%);
-margin:auto;
-padding:38px 0 70px
-}
-
-.card{
-background:#ffffffe8;
-border:1px solid #ffffffcc;
-border-radius:24px;
-padding:26px;
-margin:22px 0;
-box-shadow:0 12px 35px #1f293714
-}
-
-.counter{text-align:center}
-.counter h2{margin-top:0}
-
-.count-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
-}
-
-.count-box{
-background:linear-gradient(135deg,#fff1f2,#fce7f3);
-border-radius:18px;
-padding:18px 8px
-}
-
-.count-number{
-font-size:clamp(28px,7vw,46px);
-font-weight:800;
-color:#be123c
-}
-
-.count-label{
-font-size:13px;
-color:#6b7280
-}
-
-.message{
-text-align:center;
-line-height:1.8;
-font-size:17px;
-color:#4b5563
-}
-
-.message strong{color:#be123c}
-
-.section-title{
-text-align:center;
-margin:42px 0 18px
-}
-
-.section-title h2{
-margin:0 0 5px;
-font-size:30px
-}
-
-.section-title p{
-margin:0;
-color:#6b7280
-}
-
-.months{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px
-}
-
-.month-btn{
-border:1px solid #fbcfe8;
-background:white;
-border-radius:18px;
-padding:18px;
-cursor:pointer;
-text-align:left;
-transition:.2s;
-box-shadow:0 7px 18px #1f29350d
-}
-
-.month-btn:hover{
-transform:translateY(-3px)
-}
-
-.month-btn strong{
-display:block;
-color:#be123c;
-margin-bottom:4px
-}
-
-.month-btn span{
-font-size:13px;
-color:#6b7280
-}
-
-.month-panel{
-display:none;
-animation:rise .45s ease both
-}
-
-.month-panel.active{
-display:block
-}
-
-.back{
-border:0;
-background:#fce7f3;
-color:#9d174d;
-border-radius:12px;
-padding:10px 14px;
-cursor:pointer;
-margin-bottom:15px
-}
-
-.month-panel h2{
-margin:0;
-color:#9d174d
-}
-
-.hint{
-color:#6b7280
-}
-
-.photo-controls{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-align-items:center;
-margin:18px 0
-}
-
-.file-label,
-.save-btn,
-.youtube-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-border:0;
-border-radius:12px;
-padding:11px 15px;
-cursor:pointer;
-font-weight:700;
-text-decoration:none
-}
-
-.file-label{
-background:#fce7f3;
-color:#9d174d
-}
-
-.save-btn{
-background:#be123c;
-color:white
-}
-
-.youtube-btn{
-background:#dc2626;
-color:white
-}
-
-input[type=file]{
-display:none
-}
-
-.collage{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-
-.photo{
-width:100%;
-aspect-ratio:1;
-object-fit:cover;
-border-radius:16px;
-box-shadow:0 8px 18px #0002;
-animation:photoIn .5s ease both
-}
-
-.photo:nth-child(2n){
-transform:rotate(1.2deg)
-}
-
-.photo:nth-child(3n){
-transform:rotate(-1.2deg)
-}
-
-.empty{
-grid-column:1/-1;
-text-align:center;
-color:#9ca3af;
-padding:30px 10px;
-border:2px dashed #e5e7eb;
-border-radius:16px
-}
-
-.music-box{
-text-align:center;
-background:linear-gradient(135deg,#fff1f2,#fce7f3);
-padding:20px;
-border-radius:18px
-}
-
-.music-box h3{
-margin:0 0 8px;
-color:#9d174d
-}
-
-.music-box p{
-color:#6b7280
-}
-
-.music-box .youtube-btn{
-margin-top:8px
-}
-
-.status{
-font-size:13px;
-min-height:20px;
-margin:8px 0;
-color:#16a34a
-}
-
-.privacy-note{
-font-size:12px;
-line-height:1.5;
-color:#6b7280
-}
-
-footer{
-text-align:center;
-color:#6b7280;
-padding:25px
-}
-
-.slideshow-modal{
-position:fixed;
-inset:0;
-z-index:9999;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,.92);
-padding:30px 55px
-}
-
-.slideshow-modal.active{
-display:flex
-}
-
-.slide-content{
-width:min(900px,90vw);
-height:min(82vh,800px);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:14px
-}
-
-.slide-content img{
-max-width:100%;
-max-height:76vh;
-width:auto;
-height:auto;
-object-fit:contain;
-border-radius:14px;
-box-shadow:0 15px 50px rgba(0,0,0,.45);
-animation:slideIn .3s ease both
-}
-
-.slide-counter{
-color:white;
-font-weight:700;
-background:rgba(255,255,255,.12);
-padding:7px 13px;
-border-radius:20px
-}
-
-.slide-close{
-position:absolute;
-top:18px;
-right:22px;
-width:46px;
-height:46px;
-border:0;
-border-radius:50%;
-background:rgba(255,255,255,.15);
-color:white;
-font-size:34px;
-line-height:1;
-cursor:pointer
-}
-
-.slide-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:48px;
-height:64px;
-border:0;
-border-radius:16px;
-background:rgba(255,255,255,.14);
-color:white;
-font-size:50px;
-line-height:1;
-cursor:pointer
-}
-
-.slide-prev{left:14px}
-.slide-next{right:14px}
-
-button:disabled{
-opacity:.6;
-cursor:not-allowed
-}
-
-@keyframes slideIn{
-from{
-opacity:0;
-transform:scale(.96)
-}
-to{
-opacity:1;
-transform:scale(1)
-}
-}
-
-@keyframes rise{
-from{
-opacity:0;
-transform:translateY(25px)
-}
-to{
-opacity:1;
-transform:none
-}
-}
-
-@keyframes float{
-0%{
-transform:translateY(0);
-opacity:0
-}
-15%{
-opacity:.65
-}
-100%{
-transform:translateY(-480px) rotate(25deg);
-opacity:0
-}
-}
-
-@keyframes photoIn{
-from{
-opacity:0;
-transform:scale(.85)
-}
-to{
-opacity:1
-}
-}
-
-@media(max-width:700px){
-.months{
-grid-template-columns:repeat(2,1fr)
-}
-
-.card{
-padding:20px
-}
-}
-
-@media(max-width:430px){
-.months{
-grid-template-columns:1fr
-}
-
-.collage{
-grid-template-columns:repeat(2,1fr)
-}
-
-header{
-min-height:360px
-}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestra historia ❤️</title>
+  <meta name="description" content="Nuestra historia, nuestros recuerdos y cada mes juntos." />
+
+  <style>
+    :root{
+      --bg:#fff7fb;
+      --card:rgba(255,255,255,.88);
+      --text:#3d2430;
+      --muted:#856b76;
+      --pink:#e85d8a;
+      --pink2:#ff9fbd;
+      --line:#f1d7e1;
+      --shadow:0 18px 45px rgba(132,55,84,.13);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%,rgba(255,177,204,.35),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(255,215,229,.55),transparent 28%),
+        linear-gradient(180deg,#fff8fb 0%,#fff 55%,#fff7fb 100%);
+      min-height:100vh;
+    }
+
+    button,input{font:inherit}
+    button{cursor:pointer}
+
+    .hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-30px;
+      opacity:.18;
+      animation:floatUp linear infinite;
+      user-select:none;
+    }
+
+    @keyframes floatUp{
+      from{transform:translateY(0) rotate(0deg);opacity:0}
+      15%{opacity:.2}
+      to{transform:translateY(-110vh) rotate(30deg);opacity:0}
+    }
+
+    main,.topbar{position:relative;z-index:1}
+
+    .topbar{
+      width:min(1120px,calc(100% - 28px));
+      margin:16px auto 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:10px 14px;
+      background:rgba(255,255,255,.72);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(241,215,225,.8);
+      border-radius:18px;
+      box-shadow:0 8px 30px rgba(132,55,84,.07);
+    }
+
+    .brand{
+      font-weight:800;
+      color:var(--pink);
+    }
+
+    .sync{
+      font-size:.85rem;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+
+    .sync-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#65c98b;
+      box-shadow:0 0 0 4px rgba(101,201,139,.12);
+    }
+
+    .container{
+      width:min(1120px,calc(100% - 28px));
+      margin:auto;
+    }
+
+    .hero{
+      min-height:70vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:60px 0 40px;
+    }
+
+    .hero-card{
+      width:min(850px,100%);
+      padding:48px 24px;
+      border:1px solid rgba(241,215,225,.8);
+      border-radius:32px;
+      background:rgba(255,255,255,.72);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+      animation:appear .8s ease both;
+    }
+
+    @keyframes appear{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .eyebrow{
+      color:var(--pink);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+
+    h1{
+      font-size:clamp(2.5rem,7vw,5rem);
+      line-height:.98;
+      margin:15px 0;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.08rem;
+      max-width:650px;
+      margin:0 auto 28px;
+      line-height:1.7;
+    }
+
+    .counter{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:28px auto;
+    }
+
+    .counter-item{
+      min-width:100px;
+      padding:15px 18px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .counter-number{
+      display:block;
+      font-size:1.8rem;
+      font-weight:900;
+      color:var(--pink);
+    }
+
+    .counter-label{
+      display:block;
+      color:var(--muted);
+      font-size:.82rem;
+      margin-top:2px;
+    }
+
+    .message{
+      max-width:720px;
+      margin:25px auto 0;
+      padding:20px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#fff0f6,#fff);
+      border:1px solid #f6d5e1;
+      line-height:1.7;
+    }
+
+    section{
+      padding:55px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .section-title h2{
+      margin:0 0 8px;
+      font-size:clamp(1.8rem,5vw,2.8rem);
+    }
+
+    .section-title p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .months-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .month-card{
+      position:relative;
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:22px;
+      padding:22px 15px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(132,55,84,.07);
+      transition:.25s ease;
+    }
+
+    .month-card:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow);
+    }
+
+    .month-card.active{
+      border-color:var(--pink);
+      box-shadow:0 12px 30px rgba(232,93,138,.18);
+    }
+
+    .month-number{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      margin:0 auto 12px;
+      border-radius:50%;
+      background:#ffe5ee;
+      color:var(--pink);
+      font-weight:900;
+    }
+
+    .month-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+    }
+
+    .month-card small{
+      color:var(--muted);
+    }
+
+    .month-panel{
+      margin-top:28px;
+      display:none;
+      animation:appear .35s ease both;
+    }
+
+    .month-panel.visible{
+      display:block;
+    }
+
+    .panel{
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .panel-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .panel-header h3{
+      margin:0;
+      font-size:1.5rem;
+    }
+
+    .panel-header p{
+      color:var(--muted);
+      margin:4px 0 0;
+    }
+
+    .close-btn,
+    .primary-btn,
+    .secondary-btn{
+      border:0;
+      border-radius:14px;
+      padding:11px 16px;
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .primary-btn{
+      background:var(--pink);
+      color:white;
+      box-shadow:0 8px 20px rgba(232,93,138,.22);
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .secondary-btn,
+    .close-btn{
+      background:#fff0f5;
+      color:var(--pink);
+      border:1px solid #f4cfdd;
+    }
+
+    .photo-tools{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .file-input{
+      display:none;
+    }
+
+    .upload-label{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:14px;
+      background:var(--pink);
+      color:white;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(232,93,138,.22);
+    }
+
+    .status{
+      margin:12px 0;
+      min-height:22px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .collage{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      min-height:150px;
+    }
+
+    .photo-card{
+      position:relative;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      border-radius:18px;
+      background:#fff2f7;
+      border:1px solid var(--line);
+    }
+
+    .photo-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .35s ease;
+    }
+
+    .photo-card:hover img{
+      transform:scale(1.04);
+    }
+
+    .empty-state{
+      grid-column:1/-1;
+      min-height:180px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      padding:25px;
+      border:1px dashed #e8c6d3;
+      border-radius:20px;
+      background:#fffafd;
+    }
+
+    .music-box{
+      margin-top:25px;
+      padding:20px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#fff5f8,#fff);
+      border:1px solid var(--line);
+    }
+
+    .music-box h4{
+      margin:0 0 7px;
+    }
+
+    .music-box p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .music-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .music-row input{
+      flex:1;
+      min-width:230px;
+      border:1px solid #e7cad5;
+      border-radius:14px;
+      padding:12px 14px;
+      outline:none;
+      background:white;
+    }
+
+    .music-row input:focus{
+      border-color:var(--pink);
+      box-shadow:0 0 0 3px rgba(232,93,138,.1);
+    }
+
+    .saved-music{
+      margin-top:15px;
+      min-height:20px;
+    }
+
+    .youtube-frame{
+      width:100%;
+      max-width:650px;
+      aspect-ratio:16/9;
+      border:0;
+      border-radius:18px;
+      margin-top:15px;
+      display:none;
+      background:#000;
+    }
+
+    .slideshow{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      background:rgba(27,12,18,.94);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:25px;
+    }
+
+    .slideshow.visible{
+      display:flex;
+    }
+
+    .slide-image{
+      max-width:90vw;
+      max-height:82vh;
+      object-fit:contain;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .slide-close{
+      position:absolute;
+      top:20px;
+      right:20px;
+      width:45px;
+      height:45px;
+      border:0;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
+      color:white;
+      font-size:1.5rem;
+    }
+
+    .slide-prev,
+    .slide-next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:50px;
+      height:50px;
+      border:0;
+      border-radius:50%;
+      background:rgba(255,255,255,.14);
+      color:white;
+      font-size:1.7rem;
+    }
+
+    .slide-prev{left:20px}
+    .slide-next{right:20px}
+
+    .slide-counter{
+      position:absolute;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      color:white;
+      background:rgba(255,255,255,.12);
+      padding:7px 12px;
+      border-radius:20px;
+      font-size:.9rem;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:50px 20px 70px;
+    }
+
+    .heart-big{
+      font-size:2rem;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    @media(max-width:800px){
+      .months-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .collage{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero{
+        min-height:auto;
+        padding:45px 0 25px;
+      }
+    }
+
+    @media(max-width:480px){
+      .months-grid{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+      }
+
+      .month-card{
+        padding:16px 9px;
+      }
+
+      .month-number{
+        width:42px;
+        height:42px;
+      }
+
+      .panel{
+        padding:16px;
+      }
+
+      .collage{
+        gap:7px;
+      }
+
+      .counter-item{
+        min-width:85px;
+        padding:12px 10px;
+      }
+
+      .counter-number{
+        font-size:1.45rem;
+      }
+
+      .slide-prev,
+      .slide-next{
+        width:42px;
+        height:42px;
+      }
+
+      .slide-prev{left:8px}
+      .slide-next{right:8px}
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="topbar">
+    <div class="brand">Nuestra historia ❤️</div>
+    <div class="sync">
+      <span class="sync-dot"></span>
+      <span id="syncText">Conectando...</span>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Nuestra historia</div>
+
+        <h1>Un comienzo<br>para recordar ❤️</h1>
+
+        <p>
+          Hay historias que comienzan con un momento pequeño,
+          pero terminan convirtiéndose en algo muy importante.
+          Esta es la nuestra.
+        </p>
+
+        <div class="counter">
+          <div class="counter-item">
+            <span class="counter-number" id="years">0</span>
+            <span class="counter-label">años</span>
+          </div>
+
+          <div class="counter-item">
+            <span class="counter-number" id="months">0</span>
+            <span class="counter-label">meses</span>
+          </div>
+
+          <div class="counter-item">
+            <span class="counter-number" id="days">0</span>
+            <span class="counter-label">días</span>
+          </div>
+        </div>
+
+        <div class="message">
+          Quiero que esto sea solamente el comienzo de muchos recuerdos.
+          Que podamos disfrutar los momentos bonitos, aprender de los
+          difíciles y seguir construyendo nuestra historia poco a poco. ❤️
+        </div>
+      </div>
+    </section>
+
+    <section id="recuerdos">
+      <div class="section-title">
+        <h2>Nuestros recuerdos</h2>
+        <p>Guarda aquí las fotografías de cada etapa de nuestra historia.</p>
+      </div>
+
+      <div class="months-grid" id="monthsGrid"></div>
+
+      <div class="month-panel" id="monthPanel">
+        <div class="panel">
+
+          <div class="panel-header">
+            <div>
+              <h3 id="selectedMonthTitle">Primer mes</h3>
+              <p id="selectedMonthDescription">
+                Nuestros recuerdos de este momento.
+              </p>
+            </div>
+
+            <button class="close-btn" id="closeMonth">
+              Cerrar
+            </button>
+          </div>
+
+          <div class="photo-tools">
+
+            <label class="upload-label">
+              📷 Agregar fotografías
+              <input
+                class="file-input"
+                id="photoInput"
+                type="file"
+                accept="image/*"
+                multiple
+              />
+            </label>
 
-<div class="hearts" aria-hidden="true">
-<span>❤️</span>
-<span>💗</span>
-<span>💕</span>
-<span>❤️</span>
-<span>💖</span>
-</div>
+            <button class="secondary-btn" id="slideshowBtn">
+              ▶ Ver presentación
+            </button>
+
+          </div>
 
-<div class="hero">
+          <div class="status" id="photoStatus"></div>
 
-<h1>Nuestra historia ❤️</h1>
+          <div class="collage" id="collage"></div>
 
-<p>
-Un pequeño espacio para guardar nuestros recuerdos
-y todo lo bonito que vamos construyendo.
-</p>
+          <div class="music-box">
 
-</div>
+            <h4>🎵 Música de este mes</h4>
 
-</header>
+            <p>
+              Pega el enlace de una canción de YouTube.
+              Se guardará para que pueda verse desde ambos teléfonos.
+            </p>
 
+            <div class="music-row">
 
-<main>
+              <input
+                id="youtubeInput"
+                type="url"
+                placeholder="https://www.youtube.com/watch?v=..."
+              />
 
-<section class="card counter">
+              <button class="primary-btn" id="saveMusicBtn">
+                Guardar música
+              </button>
 
-<h2>Tiempo juntos</h2>
+            </div>
 
-<div class="count-grid">
+            <div class="saved-music" id="savedMusic"></div>
 
-<div class="count-box">
-<div id="years" class="count-number">0</div>
-<div class="count-label">AÑOS</div>
-</div>
+            <iframe
+              class="youtube-frame"
+              id="youtubeFrame"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
 
-<div class="count-box">
-<div id="months" class="count-number">0</div>
-<div class="count-label">MESES</div>
-</div>
+          </div>
 
-<div class="count-box">
-<div id="days" class="count-number">0</div>
-<div class="count-label">DÍAS</div>
-</div>
+        </div>
+      </div>
+    </section>
 
-</div>
+  </main>
 
-</section>
+  <footer>
+    <span class="heart-big">❤️</span>
+    Nuestra historia apenas comienza.
+  </footer>
 
+  <div class="slideshow" id="slideshow">
 
-<section class="card message">
+    <button class="slide-close" id="slideClose">
+      ×
+    </button>
 
-<p>
-Quiero que esto sea
-<strong>un comienzo</strong>
-de muchos recuerdos, momentos,
-aprendizajes y sonrisas.
-Que podamos acompañarnos en los días buenos
-y también en los difíciles,
-cuidando siempre lo que estamos construyendo.
-</p>
+    <button class="slide-prev" id="slidePrev">
+      ‹
+    </button>
 
-<p>
-Aquí iremos guardando pequeños pedacitos
-de nuestra historia para poder volver a ellos
-y recordar todo lo que hemos vivido juntos. ❤️
-</p>
+    <img
+      class="slide-image"
+      id="slideImage"
+      alt="Recuerdo"
+    />
 
-</section>
+    <button class="slide-next" id="slideNext">
+      ›
+    </button>
 
+    <div class="slide-counter" id="slideCounter">
+      1 / 1
+    </div>
 
-<div id="monthsView">
+  </div>
 
-<div class="section-title">
+  <script>
 
-<h2>Nuestros recuerdos</h2>
+    /* =========================================================
+       CONFIGURACIÓN DE SUPABASE
+       ========================================================= */
 
-<p>
-Elige un mes para guardar y ver sus fotos.
-</p>
+    const SUPABASE_URL =
+      "https://qrqshvszanznyjudyotk.supabase.co";
 
-</div>
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_XbVYpB_mM2MFYecgN6eFOg_lVRmG7q7";
 
+    const BUCKET_NAME =
+      "nuestra-historia";
 
-<section class="card">
+    const STORAGE_OBJECT_URL =
+      SUPABASE_URL + "/storage/v1/object";
 
-<div class="months" id="monthButtons"></div>
+    const STORAGE_LIST_URL =
+      SUPABASE_URL +
+      "/storage/v1/object/list/" +
+      encodeURIComponent(BUCKET_NAME);
 
-</section>
 
-</div>
+    /* =========================================================
+       FECHA DE INICIO
+       5 DE SEPTIEMBRE DE 2026 - 17:50
+       ========================================================= */
 
+    const START_DATE =
+      new Date(2026, 8, 5, 17, 50, 0);
 
-<section
-id="monthPanel"
-class="card month-panel"
->
 
-<button
-class="back"
-id="backBtn"
->
-← Volver a los meses
-</button>
-
-<h2 id="selectedMonthTitle"></h2>
-
-<p
-id="selectedMonthHint"
-class="hint"
-></p>
+    /* =========================================================
+       VARIABLES
+       ========================================================= */
 
+    const monthNames = [
+      "Primer mes",
+      "Segundo mes",
+      "Tercer mes",
+      "Cuarto mes",
+      "Quinto mes",
+      "Sexto mes",
+      "Séptimo mes",
+      "Octavo mes",
+      "Noveno mes",
+      "Décimo mes",
+      "Undécimo mes",
+      "Un año"
+    ];
 
-<div class="photo-controls">
+    let selectedMonth = null;
+    let currentPhotos = [];
+    let slideshowIndex = 0;
 
-<label class="file-label">
-
-📷 Elegir fotos
 
-<input
-id="photoInput"
-type="file"
-accept="image/*"
-multiple
->
-
-</label>
-
-
-<button
-class="save-btn"
-id="savePhotos"
->
-Guardar fotos
-</button>
-
-
-<button
-class="save-btn"
-id="slideshowBtn"
-style="display:none"
->
-▶ Ver fotos una por una
-</button>
-
-</div>
-
-
-<div
-id="collage"
-class="collage"
-></div>
-
-
-<div
-id="musicBox"
-class="music-box"
-style="margin-top:25px"
->
-
-<h3>🎵 Música de este mes</h3>
-
-<p>
-Pega el enlace de YouTube de la canción
-que quieras para este mes.
-Se guardará automáticamente y podrá verse
-desde ambos teléfonos.
-</p>
-
-<input
-id="youtubeInput"
-type="url"
-placeholder="Pega aquí el enlace de YouTube"
-style="
-width:100%;
-padding:12px;
-border:1px solid #e5e7eb;
-border-radius:12px;
-outline:0;
-"
->
-
-<p
-id="musicSaved"
-class="status"
-></p>
-
-<a
-id="youtubeLink"
-class="youtube-btn"
-href="#"
-target="_blank"
-rel="noopener noreferrer"
-style="display:none"
->
-▶ Escuchar en YouTube
-</a>
+    /* =========================================================
+       HEADERS PARA SUPABASE REST
+       ========================================================= */
 
-</div>
-
-
-<p class="privacy-note">
-Las fotos y los enlaces de YouTube se guardan
-en Supabase para que puedan verse desde ambos teléfonos.
-</p>
+    function storageHeaders(extra = {}) {
 
-</section>
+      return {
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Authorization":
+          "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+        ...extra
+      };
 
-</main>
+    }
 
 
-<div
-id="slideshowModal"
-class="slideshow-modal"
-aria-hidden="true"
->
+    /* =========================================================
+       SUBIR ARCHIVO A STORAGE
+       ========================================================= */
 
-<button
-id="closeSlideshow"
-class="slide-close"
-aria-label="Cerrar"
->
-×
-</button>
-
-<button
-id="prevSlide"
-class="slide-arrow slide-prev"
-aria-label="Foto anterior"
->
-‹
-</button>
+    async function uploadStorage(
+      path,
+      body,
+      contentType
+    ){
 
-<div class="slide-content">
+      const url =
+        STORAGE_OBJECT_URL +
+        "/" +
+        encodeURIComponent(BUCKET_NAME) +
+        "/" +
+        path
+          .split("/")
+          .map(encodeURIComponent)
+          .join("/");
 
-<img
-id="slideImage"
-src=""
-alt="Recuerdo"
->
+      const response =
+        await fetch(url, {
 
-<div
-id="slideCounter"
-class="slide-counter"
-></div>
+          method:"POST",
 
-</div>
+          headers:
+            storageHeaders({
+              "Content-Type": contentType,
+              "x-upsert":"false"
+            }),
 
-<button
-id="nextSlide"
-class="slide-arrow slide-next"
-aria-label="Foto siguiente"
->
-›
-</button>
+          body:body
 
-</div>
+        });
 
+      if(!response.ok){
 
-<footer>
-Hecho con cariño para guardar nuestros recuerdos. ❤️
-</footer>
+        const text =
+          await response.text();
 
+        throw new Error(
+          text ||
+          "Error al subir el archivo."
+        );
 
-<script>
+      }
 
-const START_DATE =
-new Date(
-2026,
-8,
-5,
-17,
-50,
-0
-);
+      return response;
 
+    }
 
-function calendarDifference(start,end){
 
-let years =
-end.getFullYear() -
-start.getFullYear();
+    /* =========================================================
+       LISTAR ARCHIVOS
+       ========================================================= */
 
-let months =
-end.getMonth() -
-start.getMonth();
+    async function listStorage(prefix){
 
-let days =
-end.getDate() -
-start.getDate();
+      const response =
+        await fetch(
+          STORAGE_LIST_URL,
+          {
 
-if(days<0){
+            method:"POST",
 
-months--;
+            headers:
+              storageHeaders({
+                "Content-Type":
+                  "application/json"
+              }),
 
-days +=
-new Date(
-end.getFullYear(),
-end.getMonth(),
-0
-).getDate();
+            body:
+              JSON.stringify({
+                prefix:prefix,
+                limit:1000,
+                offset:0,
+                sortBy:{
+                  column:"name",
+                  order:"asc"
+                }
+              })
 
-}
+          }
+        );
 
-if(months<0){
+      if(!response.ok){
 
-years--;
+        const text =
+          await response.text();
 
-months += 12;
+        throw new Error(
+          text ||
+          "No se pudieron consultar los archivos."
+        );
 
-}
+      }
 
-return years<0
-?
-{
-years:0,
-months:0,
-days:0
-}
-:
-{
-years,
-months,
-days
-};
+      return await response.json();
 
-}
+    }
 
 
-function updateCounter(){
+    /* =========================================================
+       URL PÚBLICA
+       ========================================================= */
 
-const d =
-calendarDifference(
-START_DATE,
-new Date()
-);
+    function publicStorageUrl(path){
 
-document.getElementById(
-"years"
-).textContent =
-d.years;
+      return (
+        STORAGE_OBJECT_URL +
+        "/public/" +
+        encodeURIComponent(BUCKET_NAME) +
+        "/" +
+        path
+          .split("/")
+          .map(encodeURIComponent)
+          .join("/")
+      );
 
-document.getElementById(
-"months"
-).textContent =
-d.months;
+    }
 
-document.getElementById(
-"days"
-).textContent =
-d.days;
 
-}
+    /* =========================================================
+       CONTADOR
+       ========================================================= */
 
+    function calendarDifference(start, end){
 
-updateCounter();
+      let years =
+        end.getFullYear() -
+        start.getFullYear();
 
-setInterval(
-updateCounter,
-60000
-);
+      let months =
+        end.getMonth() -
+        start.getMonth();
 
+      let days =
+        end.getDate() -
+        start.getDate();
 
-const names=[
+      if(days < 0){
 
-"Primer mes",
-"Segundo mes",
-"Tercer mes",
-"Cuarto mes",
-"Quinto mes",
-"Sexto mes",
-"Séptimo mes",
-"Octavo mes",
-"Noveno mes",
-"Décimo mes",
-"Undécimo mes",
-"Un año"
+        months--;
 
-];
+        const previousMonth =
+          new Date(
+            end.getFullYear(),
+            end.getMonth(),
+            0
+          );
 
+        days +=
+          previousMonth.getDate();
 
-const texts=[
+      }
 
-"El comienzo de nuestra historia y de todos los recuerdos que vendrán.",
+      if(months < 0){
 
-"Otro pedacito de nuestra historia para guardar.",
+        years--;
 
-"Seguimos sumando momentos que merecen ser recordados.",
+        months += 12;
 
-"Un nuevo capítulo de esta historia que seguimos construyendo.",
+      }
 
-"Más recuerdos, más momentos y más razones para sonreír.",
+      return {
+        years,
+        months,
+        days
+      };
 
-"Medio camino hacia nuestro primer año lleno de recuerdos.",
+    }
 
-"Seguimos escribiendo juntos nuestra historia.",
 
-"Cada momento se convierte en un recuerdo especial.",
+    function updateCounter(){
 
-"Otro mes compartiendo momentos importantes.",
+      const now = new Date();
 
-"Nuestra historia sigue creciendo con cada día.",
+      if(now < START_DATE){
 
-"Ya casi llegamos a nuestro primer año.",
+        document.getElementById("years").textContent = "0";
+        document.getElementById("months").textContent = "0";
+        document.getElementById("days").textContent = "0";
 
-"Un año de nuestra historia y de todos los recuerdos que construimos juntos. ❤️"
+        return;
 
-];
+      }
 
+      const difference =
+        calendarDifference(
+          START_DATE,
+          now
+        );
 
-const monthButtons =
-document.getElementById(
-"monthButtons"
-);
+      document.getElementById("years")
+        .textContent =
+        difference.years;
 
-const monthsView =
-document.getElementById(
-"monthsView"
-);
+      document.getElementById("months")
+        .textContent =
+        difference.months;
 
-const monthPanel =
-document.getElementById(
-"monthPanel"
-);
+      document.getElementById("days")
+        .textContent =
+        difference.days;
 
-const selectedMonthTitle =
-document.getElementById(
-"selectedMonthTitle"
-);
+    }
 
-const selectedMonthHint =
-document.getElementById(
-"selectedMonthHint"
-);
 
-const collage =
-document.getElementById(
-"collage"
-);
+    updateCounter();
 
-const photoInput =
-document.getElementById(
-"photoInput"
-);
+    setInterval(
+      updateCounter,
+      1000
+    );
 
-const slideshowBtn =
-document.getElementById(
-"slideshowBtn"
-);
 
-const youtubeInput =
-document.getElementById(
-"youtubeInput"
-);
+    /* =========================================================
+       CORAZONES ANIMADOS
+       ========================================================= */
 
-const musicSaved =
-document.getElementById(
-"musicSaved"
-);
+    function createHearts(){
 
-const youtubeLink =
-document.getElementById(
-"youtubeLink"
-);
+      const container =
+        document.getElementById("hearts");
 
-const slideshowModal =
-document.getElementById(
-"slideshowModal"
-);
+      const symbols =
+        ["❤️","💕","💗","💖","♡"];
 
-const slideImage =
-document.getElementById(
-"slideImage"
-);
+      for(
+        let i=0;
+        i<18;
+        i++
+      ){
 
-const slideCounter =
-document.getElementById(
-"slideCounter"
-);
+        const heart =
+          document.createElement("div");
 
-const closeSlideshow =
-document.getElementById(
-"closeSlideshow"
-);
+        heart.className =
+          "heart";
 
-const prevSlide =
-document.getElementById(
-"prevSlide"
-);
+        heart.textContent =
+          symbols[
+            Math.floor(
+              Math.random() *
+              symbols.length
+            )
+          ];
 
-const nextSlide =
-document.getElementById(
-"nextSlide"
-);
+        heart.style.left =
+          Math.random() * 100 + "%";
 
-const savePhotosButton =
-document.getElementById(
-"savePhotos"
-);
+        heart.style.fontSize =
+          (12 + Math.random()*18) + "px";
 
+        heart.style.animationDuration =
+          (8 + Math.random()*12) + "s";
 
-let slideshowImages=[];
+        heart.style.animationDelay =
+          (-Math.random()*15) + "s";
 
-let slideshowIndex=0;
+        container.appendChild(heart);
 
-let selectedMonth=null;
+      }
 
-let selectedFiles=[];
+    }
 
-let musicSaveTimer=null;
+    createHearts();
 
 
-names.forEach(
-(name,index)=>{
+    /* =========================================================
+       CREAR TARJETAS DE MESES
+       ========================================================= */
 
-const button =
-document.createElement(
-"button"
-);
+    function createMonthCards(){
 
-button.className =
-"month-btn";
+      const grid =
+        document.getElementById(
+          "monthsGrid"
+        );
 
-button.innerHTML =
-`<strong>${name}</strong><span>${texts[index]}</span>`;
+      grid.innerHTML = "";
 
-button.onclick =
-()=>openMonth(index);
+      monthNames.forEach(
+        (name,index)=>{
 
-monthButtons.appendChild(
-button
-);
+          const card =
+            document.createElement("button");
 
-});
+          card.className =
+            "month-card";
 
+          card.type =
+            "button";
 
-/* =========================================================
-   SUPABASE
-   Usamos la API REST directamente.
-   ========================================================= */
+          card.innerHTML = `
+            <div class="month-number">
+              ${index + 1}
+            </div>
 
-const SUPABASE_URL =
-"https://qrqshvszanznyjudyotk.supabase.co";
+            <h3>${name}</h3>
 
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_XbVYpB_mM2MFYecgN6eFOg_lVRmG7q7";
+            <small>
+              Ver recuerdos ❤️
+            </small>
+          `;
 
-const BUCKET_NAME =
-"nuestra-historia";
+          card.addEventListener(
+            "click",
+            ()=>{
+              openMonth(index);
+            }
+          );
 
+          grid.appendChild(card);
 
-const STORAGE_OBJECT_URL =
-`${SUPABASE_URL}/storage/v1/object`;
+        }
+      );
 
-const STORAGE_LIST_URL =
-`${SUPABASE_URL}/storage/v1/object/list/${encodeURIComponent(BUCKET_NAME)}`;
+    }
 
+    createMonthCards();
 
-function storageHeaders(extra={}){
 
-return {
+    /* =========================================================
+       ABRIR MES
+       ========================================================= */
 
-"apikey":
-SUPABASE_PUBLISHABLE_KEY,
+    async function openMonth(index){
 
-"Authorization":
-`Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+      selectedMonth =
+        index;
 
-...extra
+      document
+        .querySelectorAll(
+          ".month-card"
+        )
+        .forEach(
+          (card,i)=>{
+            card.classList.toggle(
+              "active",
+              i === index
+            );
+          }
+        );
 
-};
+      document.getElementById(
+        "selectedMonthTitle"
+      ).textContent =
+        monthNames[index];
 
-}
+      document.getElementById(
+        "selectedMonthDescription"
+      ).textContent =
+        "Nuestros recuerdos de " +
+        monthNames[index].toLowerCase() +
+        ".";
 
+      document.getElementById(
+        "monthPanel"
+      ).classList.add(
+        "visible"
+      );
 
-function publicStorageUrl(path){
+      document.getElementById(
+        "photoStatus"
+      ).textContent =
+        "Cargando recuerdos...";
 
-return `${STORAGE_OBJECT_URL}/public/${encodeURIComponent(BUCKET_NAME)}/${path.split("/").map(encodeURIComponent).join("/")}`;
+      await loadPhotos();
 
-}
+      await loadMusic();
 
+      document.getElementById(
+        "monthPanel"
+      ).scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
 
-async function readResponseError(response){
+    }
 
-let text="";
 
-try{
+    /* =========================================================
+       CERRAR MES
+       ========================================================= */
 
-text =
-await response.text();
+    document.getElementById(
+      "closeMonth"
+    ).addEventListener(
+      "click",
+      ()=>{
 
-}
-catch(e){}
+        document.getElementById(
+          "monthPanel"
+        ).classList.remove(
+          "visible"
+        );
 
-let detail=text;
+        document
+          .querySelectorAll(
+            ".month-card"
+          )
+          .forEach(
+            card=>{
+              card.classList.remove(
+                "active"
+              );
+            }
+          );
 
-try{
+        selectedMonth =
+          null;
 
-const json =
-JSON.parse(text);
+      }
+    );
 
-detail =
-json.message ||
-json.error ||
-json.error_description ||
-text;
 
-}
-catch(e){}
+    /* =========================================================
+       CARGAR FOTOS
+       ========================================================= */
 
-return `HTTP ${response.status}: ${detail||response.statusText||"Error de Supabase"}`;
+    async function loadPhotos(){
 
-}
+      if(
+        selectedMonth === null
+      ){
+        return;
+      }
 
+      const collage =
+        document.getElementById(
+          "collage"
+        );
 
-async function listStorage(prefix){
+      collage.innerHTML = `
+        <div class="empty-state">
+          Cargando fotografías...
+        </div>
+      `;
 
-const response =
-await fetch(
-STORAGE_LIST_URL,
-{
+      try{
 
-method:"POST",
+        const prefix =
+          "mes-" +
+          (selectedMonth + 1) +
+          "/";
 
-headers:
-storageHeaders(
-{
-"Content-Type":
-"application/json"
-}
-),
+        const files =
+          await listStorage(
+            prefix
+          );
 
-body:
-JSON.stringify(
-{
-prefix,
+        currentPhotos = [];
 
-limit:100,
+        files.forEach(
+          file=>{
 
-sortBy:
-{
-column:"name",
-order:"asc"
-}
-}
-)
+            if(
+              !file.name ||
+              file.name.endsWith("/")
+            ){
+              return;
+            }
 
-}
-);
+            const path =
+              prefix +
+              file.name;
 
+            currentPhotos.push({
+              name:file.name,
+              path:path,
+              url:
+                publicStorageUrl(
+                  path
+                )
+            });
 
-if(!response.ok){
+          }
+        );
 
-throw new Error(
-await readResponseError(
-response
-)
-);
+        renderPhotos();
 
-}
+        document.getElementById(
+          "photoStatus"
+        ).textContent =
+          currentPhotos.length
+          ? currentPhotos.length +
+            " fotografía(s) guardada(s)."
+          : "Todavía no hay fotografías en este mes.";
 
+      }catch(error){
 
-return await response.json();
+        console.error(
+          error
+        );
 
-}
+        currentPhotos = [];
 
+        collage.innerHTML = `
+          <div class="empty-state">
+            No se pudieron cargar las fotografías.<br>
+            <small>${escapeHtml(
+              error.message || ""
+            )}</small>
+          </div>
+        `;
 
-async function uploadStorage(
-path,
-body,
-contentType
-){
+        document.getElementById(
+          "photoStatus"
+        ).textContent =
+          "No se pudieron cargar las fotografías.";
 
-const url =
-`${STORAGE_OBJECT_URL}/${encodeURIComponent(BUCKET_NAME)}/${path.split("/").map(encodeURIComponent).join("/")}`;
+      }
 
+    }
 
-const response =
-await fetch(
-url,
-{
 
-method:"POST",
+    /* =========================================================
+       MOSTRAR FOTOS
+       ========================================================= */
 
-headers:
-storageHeaders(
-{
+    function renderPhotos(){
 
-"Content-Type":
-contentType,
+      const collage =
+        document.getElementById(
+          "collage"
+        );
 
-"x-upsert":
-"false",
+      collage.innerHTML = "";
 
-"cache-control":
-"0"
+      if(
+        currentPhotos.length === 0
+      ){
 
-}
-),
+        collage.innerHTML = `
+          <div class="empty-state">
+            <div>
+              <strong>Aún no hay recuerdos aquí ❤️</strong>
+              <br>
+              <span>
+                Agrega fotografías para comenzar este álbum.
+              </span>
+            </div>
+          </div>
+        `;
 
-body
+        return;
 
-}
-);
+      }
 
+      currentPhotos.forEach(
+        (photo,index)=>{
 
-if(!response.ok){
+          const item =
+            document.createElement(
+              "div"
+            );
 
-throw new Error(
-await readResponseError(
-response
-)
-);
+          item.className =
+            "photo-card";
 
-}
+          const image =
+            document.createElement(
+              "img"
+            );
 
+          image.src =
+            photo.url;
 
-return await response
-.json()
-.catch(
-()=>({})
-);
+          image.alt =
+            "Recuerdo " +
+            (index + 1);
 
-}
+          image.loading =
+            "lazy";
 
+          image.addEventListener(
+            "click",
+            ()=>{
+              openSlideshow(index);
+            }
+          );
 
-async function getPhotos(month){
+          item.appendChild(
+            image
+          );
 
-const prefix =
-`mes-${month+1}`;
+          collage.appendChild(
+            item
+          );
 
-const data =
-await listStorage(
-prefix
-);
+        }
+      );
 
+    }
 
-return (data||[])
-.filter(
-file =>
-file.name &&
-/\.jpg$/i.test(
-file.name
-)
-)
-.map(
-file =>
-publicStorageUrl(
-`${prefix}/${file.name}`
-)
-);
 
-}
+    /* =========================================================
+       SELECCIONAR FOTOGRAFÍAS
+       ========================================================= */
 
+    document.getElementById(
+      "photoInput"
+    ).addEventListener(
+      "change",
+      async function(){
 
-async function savePhotosToDB(
-month,
-images
-){
+        const files =
+          Array.from(
+            this.files || []
+          );
 
-const prefix =
-`mes-${month+1}`;
+        if(
+          !files.length ||
+          selectedMonth === null
+        ){
+          return;
+        }
 
-for(
-let i=0;
-i<images.length;
-i++
-){
+        const status =
+          document.getElementById(
+            "photoStatus"
+          );
 
-const path =
-`${prefix}/${Date.now()}-${Math.random().toString(36).slice(2,9)}.jpg`;
+        status.textContent =
+          "Guardando fotografías...";
 
-await uploadStorage(
-path,
-dataURLToBlob(
-images[i]
-),
-"image/jpeg"
-);
+        try{
 
-}
+          let uploaded = 0;
 
-}
+          for(
+            const file of files
+          ){
 
+            const safeName =
+              sanitizeFileName(
+                file.name
+              );
 
-function dataURLToBlob(
-dataURL
-){
+            const uniqueName =
+              Date.now() +
+              "-" +
+              Math.random()
+                .toString(36)
+                .slice(2,8) +
+              "-" +
+              safeName;
 
-const parts =
-dataURL.split(",");
+            const path =
+              "mes-" +
+              (selectedMonth + 1) +
+              "/" +
+              uniqueName;
 
-const mime =
-(
-parts[0].match(
-/:(.*?);/
-) || []
-)[1] ||
-"image/jpeg";
+            await uploadStorage(
+              path,
+              file,
+              file.type ||
+                "application/octet-stream"
+            );
 
-const binary =
-atob(parts[1]);
+            uploaded++;
 
-const bytes =
-new Uint8Array(
-binary.length
-);
+            status.textContent =
+              "Guardando " +
+              uploaded +
+              " de " +
+              files.length +
+              "...";
 
-for(
-let i=0;
-i<binary.length;
-i++
-){
+          }
 
-bytes[i] =
-binary.charCodeAt(i);
+          this.value = "";
 
-}
+          await loadPhotos();
 
-return new Blob(
-[bytes],
-{
-type:mime
-}
-);
+          status.textContent =
+            "¡Fotografías guardadas correctamente! ❤️";
 
-}
+        }catch(error){
 
+          console.error(
+            "Error al guardar fotos:",
+            error
+          );
 
-function compressImage(
-file,
-maxSize=1600,
-quality=.82
-){
+          status.textContent =
+            "No se pudieron guardar las fotos.";
 
-return new Promise(
-(resolve,reject)=>{
+          alert(
+            "No se pudieron guardar las fotos.\n\n" +
+            "Detalle:\n" +
+            (error.message ||
+              "Error desconocido.")
+          );
 
-const reader =
-new FileReader();
+        }
 
-reader.onload =
-event=>{
+      }
+    );
 
-const image =
-new Image();
 
-image.onload =
-()=>{
+    /* =========================================================
+       GUARDAR MÚSICA
+       ========================================================= */
 
-let width =
-image.width;
+    document.getElementById(
+      "saveMusicBtn"
+    ).addEventListener(
+      "click",
+      saveMusic
+    );
 
-let height =
-image.height;
 
-if(
-width>maxSize ||
-height>maxSize
-){
+    async function saveMusic(){
 
-const scale =
-Math.min(
-maxSize/width,
-maxSize/height
-);
+      if(
+        selectedMonth === null
+      ){
+        return;
+      }
 
-width =
-Math.round(
-width*scale
-);
+      const input =
+        document.getElementById(
+          "youtubeInput"
+        );
 
-height =
-Math.round(
-height*scale
-);
+      const url =
+        input.value.trim();
 
-}
+      if(!url){
 
-const canvas =
-document.createElement(
-"canvas"
-);
+        alert(
+          "Pega primero el enlace de YouTube."
+        );
 
-canvas.width =
-width;
+        return;
 
-canvas.height =
-height;
+      }
 
-const context =
-canvas.getContext(
-"2d"
-);
+      const videoId =
+        getYouTubeId(url);
 
-context.drawImage(
-image,
-0,
-0,
-width,
-height
-);
+      if(!videoId){
 
-resolve(
-canvas.toDataURL(
-"image/jpeg",
-quality
-)
-);
+        alert(
+          "El enlace no parece ser un enlace válido de YouTube."
+        );
 
-};
+        return;
 
-image.onerror =
-()=>reject(
-new Error(
-"No se pudo procesar una de las imágenes."
-)
-);
+      }
 
-image.src =
-event.target.result;
+      const status =
+        document.getElementById(
+          "savedMusic"
+        );
 
-};
+      status.textContent =
+        "Guardando música...";
 
-reader.onerror =
-()=>reject(
-new Error(
-"No se pudo leer una de las imágenes."
-)
-);
+      try{
 
-reader.readAsDataURL(
-file
-);
+        const data = {
+          url:url,
+          videoId:videoId,
+          savedAt:
+            new Date().toISOString()
+        };
 
-}
-);
+        const path =
+          "music/mes-" +
+          (selectedMonth + 1) +
+          "/link-" +
+          Date.now() +
+          ".json";
 
+        await uploadStorage(
+          path,
+          new Blob(
+            [
+              JSON.stringify(
+                data,
+                null,
+                2
+              )
+            ],
+            {
+              type:
+                "application/json"
+            }
+          ),
+          "application/json"
+        );
 
-}
+        input.value = "";
 
+        await loadMusic();
 
-async function openMonth(
-index
-){
+        status.textContent =
+          "¡Música guardada! 🎵";
 
-selectedMonth =
-index;
+      }catch(error){
 
-selectedFiles =
-[];
+        console.error(
+          error
+        );
 
-photoInput.value =
-"";
+        status.textContent =
+          "No se pudo guardar la música.";
 
-selectedMonthTitle.textContent =
-names[index];
+        alert(
+          "No se pudo guardar la música.\n\n" +
+          "Detalle:\n" +
+          (error.message ||
+            "Error desconocido.")
+        );
 
-selectedMonthHint.textContent =
-texts[index];
+      }
 
-monthsView.style.display =
-"none";
+    }
 
-monthPanel.classList.add(
-"active"
-);
 
-musicSaved.textContent =
-"Cargando…";
+    /* =========================================================
+       CARGAR MÚSICA
+       ========================================================= */
 
-youtubeInput.value =
-"";
+    async function loadMusic(){
 
-youtubeLink.style.display =
-"none";
+      if(
+        selectedMonth === null
+      ){
+        return;
+      }
 
-await Promise.all(
-[
-renderMusic(index),
-renderSavedPhotos()
-]
-);
+      const saved =
+        document.getElementById(
+          "savedMusic"
+        );
 
-window.scrollTo(
-{
-top:0,
-behavior:"smooth"
-}
-);
+      const frame =
+        document.getElementById(
+          "youtubeFrame"
+        );
 
-}
+      const input =
+        document.getElementById(
+          "youtubeInput"
+        );
 
+      saved.innerHTML = "";
 
-document
-.getElementById(
-"backBtn"
-)
-.onclick =
-()=>{
+      frame.style.display =
+        "none";
 
-monthPanel.classList.remove(
-"active"
-);
+      frame.src = "";
 
-monthsView.style.display =
-"block";
+      try{
 
-selectedMonth =
-null;
+        const prefix =
+          "music/mes-" +
+          (selectedMonth + 1) +
+          "/";
 
-selectedFiles =
-[];
+        const files =
+          await listStorage(
+            prefix
+          );
 
-};
+        const jsonFiles =
+          files
+            .filter(
+              file =>
+                file.name &&
+                file.name
+                  .toLowerCase()
+                  .endsWith(".json")
+            )
+            .sort(
+              (a,b)=>
+                (b.created_at || "")
+                  .localeCompare(
+                    a.created_at || ""
+                  )
+            );
 
+        if(
+          !jsonFiles.length
+        ){
 
-photoInput.onchange =
-()=>{
+          saved.innerHTML = `
+            <span style="color:#856b76">
+              Todavía no hay una canción guardada.
+            </span>
+          `;
 
-selectedFiles =
-Array.from(
-photoInput.files
-).slice(0,9);
+          return;
 
-renderPreview();
+        }
 
-};
+        const latest =
+          jsonFiles[0];
 
+        const path =
+          prefix +
+          latest.name;
 
-function renderPreview(){
+        const response =
+          await fetch(
+            publicStorageUrl(
+              path
+            )
+          );
 
-if(
-!selectedFiles.length
-){
+        if(!response.ok){
+          throw new Error(
+            "No se pudo leer la música guardada."
+          );
+        }
 
-renderSavedPhotos();
+        const data =
+          await response.json();
 
-return;
+        if(
+          data.videoId
+        ){
 
-}
+          input.value =
+            data.url || "";
 
-collage.innerHTML =
-"";
+          saved.innerHTML = `
+            <strong>
+              🎵 Canción guardada
+            </strong>
+          `;
 
-selectedFiles.forEach(
-(file,index)=>{
+          frame.src =
+            "https://www.youtube.com/embed/" +
+            encodeURIComponent(
+              data.videoId
+            );
 
-const image =
-document.createElement(
-"img"
-);
+          frame.style.display =
+            "block";
 
-image.className =
-"photo";
+        }
 
-image.alt =
-"Vista previa";
+      }catch(error){
 
-image.style.animationDelay =
-`${index*50}ms`;
+        console.error(
+          error
+        );
 
-const reader =
-new FileReader();
+        saved.innerHTML = `
+          <span style="color:#856b76">
+            No se pudo cargar la música guardada.
+          </span>
+        `;
 
-reader.onload =
-event =>
-image.src =
-event.target.result;
+      }
 
-reader.readAsDataURL(
-file
-);
+    }
 
-collage.appendChild(
-image
-);
 
-}
-);
+    /* =========================================================
+       YOUTUBE ID
+       ========================================================= */
 
-}
+    function getYouTubeId(url){
 
+      try{
 
-savePhotosButton.onclick =
-async()=>{
+        const parsed =
+          new URL(url);
 
-if(
-selectedMonth===null
-){
+        if(
+          parsed.hostname.includes(
+            "youtu.be"
+          )
+        ){
 
-return;
+          return parsed.pathname
+            .replace("/","")
+            .trim();
 
-}
+        }
 
-if(
-!selectedFiles.length
-){
+        if(
+          parsed.hostname.includes(
+            "youtube.com"
+          )
+        ){
 
-alert(
-"Primero selecciona una o más fotos."
-);
+          if(
+            parsed.searchParams.has(
+              "v"
+            )
+          ){
 
-return;
+            return parsed.searchParams
+              .get("v");
 
-}
+          }
 
+          const parts =
+            parsed.pathname
+              .split("/")
+              .filter(Boolean);
 
-savePhotosButton.disabled =
-true;
+          const embedIndex =
+            parts.indexOf(
+              "embed"
+            );
 
-savePhotosButton.textContent =
-"Guardando…";
+          if(
+            embedIndex >= 0 &&
+            parts[embedIndex + 1]
+          ){
 
+            return parts[
+              embedIndex + 1
+            ];
 
-try{
+          }
 
-const images =
-await Promise.all(
-selectedFiles.map(
-file =>
-compressImage(
-file
-)
-)
-);
+        }
 
-await savePhotosToDB(
-selectedMonth,
-images
-);
+      }catch(error){
 
-selectedFiles =
-[];
+        return null;
 
-photoInput.value =
-"";
+      }
 
-await renderSavedPhotos();
+      return null;
 
-alert(
-"¡Fotos guardadas correctamente! ❤️"
-);
+    }
 
-}
-catch(error){
 
-console.error(
-error
-);
+    /* =========================================================
+       PRESENTACIÓN
+       ========================================================= */
 
-alert(
+    document.getElementById(
+      "slideshowBtn"
+    ).addEventListener(
+      "click",
+      ()=>{
 
-"No se pudieron guardar las fotos.\n\n"+
-"Detalle:\n"+
-(
-error?.message ||
-"Error desconocido"
-)+
-"\n\nSi el mensaje empieza con HTTP, Supabase respondió con ese error."
+        if(
+          currentPhotos.length === 0
+        ){
 
-);
+          alert(
+            "Primero agrega algunas fotografías."
+          );
 
-}
-finally{
+          return;
 
-savePhotosButton.disabled =
-false;
+        }
 
-savePhotosButton.textContent =
-"Guardar fotos";
+        openSlideshow(0);
 
-}
+      }
+    );
 
-};
 
+    function openSlideshow(index){
 
-async function renderSavedPhotos(){
+      if(
+        !currentPhotos.length
+      ){
+        return;
+      }
 
-collage.innerHTML =
-"";
+      slideshowIndex =
+        index;
 
-slideshowImages =
-[];
+      updateSlideshow();
 
-if(
-selectedMonth===null
-){
+      document.getElementById(
+        "slideshow"
+      ).classList.add(
+        "visible"
+      );
 
-return;
+    }
 
-}
 
+    function updateSlideshow(){
 
-try{
+      const photo =
+        currentPhotos[
+          slideshowIndex
+        ];
 
-const saved =
-await getPhotos(
-selectedMonth
-);
+      if(!photo){
+        return;
+      }
 
-slideshowImages =
-saved.slice(0,9);
+      document.getElementById(
+        "slideImage"
+      ).src =
+        photo.url;
 
-slideshowBtn.style.display =
-slideshowImages.length
-?
-"inline-flex"
-:
-"none";
+      document.getElementById(
+        "slideCounter"
+      ).textContent =
+        (slideshowIndex + 1) +
+        " / " +
+        currentPhotos.length;
 
+    }
 
-if(
-!saved.length
-){
 
-collage.innerHTML =
-`
-<div class="empty">
-Todavía no hay fotos guardadas para este mes.
-</div>
-`;
+    function closeSlideshow(){
 
-return;
+      document.getElementById(
+        "slideshow"
+      ).classList.remove(
+        "visible"
+      );
 
-}
+    }
 
 
-saved
-.slice(0,9)
-.forEach(
-(src,index)=>{
+    document.getElementById(
+      "slideClose"
+    ).addEventListener(
+      "click",
+      closeSlideshow
+    );
 
-const image =
-document.createElement(
-"img"
-);
 
-image.className =
-"photo";
+    document.getElementById(
+      "slidePrev"
+    ).addEventListener(
+      "click",
+      ()=>{
 
-image.src =
-src;
+        slideshowIndex--;
 
-image.alt =
-"Recuerdo";
+        if(
+          slideshowIndex < 0
+        ){
 
-image.style.animationDelay =
-`${index*50}ms`;
+          slideshowIndex =
+            currentPhotos.length - 1;
 
-image.style.cursor =
-"pointer";
+        }
 
-image.onclick =
-()=>openSlideshow(
-index
-);
+        updateSlideshow();
 
-collage.appendChild(
-image
-);
+      }
+    );
 
-}
-);
 
-}
-catch(error){
+    document.getElementById(
+      "slideNext"
+    ).addEventListener(
+      "click",
+      ()=>{
 
-console.error(
-error
-);
+        slideshowIndex++;
 
-slideshowBtn.style.display =
-"none";
+        if(
+          slideshowIndex >=
+          currentPhotos.length
+        ){
 
-collage.innerHTML =
-`
-<div class="empty">
-No se pudieron cargar las fotos guardadas.
-<br>
-<small>
-${escapeHtml(
-error?.message ||
-"Error desconocido"
-)}
-</small>
-</div>
-`;
+          slideshowIndex = 0;
 
-}
+        }
 
-}
+        updateSlideshow();
 
+      }
+    );
 
-function escapeHtml(
-text
-){
 
-return String(text)
-.replace(
-/[&<>"']/g,
-m =>
-({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[m])
-);
+    document.getElementById(
+      "slideshow"
+    ).addEventListener(
+      "click",
+      event=>{
 
-}
+        if(
+          event.target.id ===
+          "slideshow"
+        ){
 
+          closeSlideshow();
 
-/* =========================================================
-   YOUTUBE COMPARTIDO
-   ========================================================= */
+        }
 
-function normalizeYouTubeUrl(
-value
-){
+      }
+    );
 
-const text =
-(value||"").trim();
 
-if(!text){
+    document.addEventListener(
+      "keydown",
+      event=>{
 
-return "";
+        const slideshow =
+          document.getElementById(
+            "slideshow"
+          );
 
-}
+        if(
+          !slideshow.classList.contains(
+            "visible"
+          )
+        ){
+          return;
+        }
 
-try{
+        if(
+          event.key ===
+          "Escape"
+        ){
 
-const url =
-new URL(text);
+          closeSlideshow();
 
-const host =
-url.hostname
-.replace(
-/^www\./,
-""
-)
-.toLowerCase();
+        }
 
-if(
-host==="youtube.com" ||
-host==="youtu.be" ||
-host==="m.youtube.com"
-){
+        if(
+          event.key ===
+          "ArrowLeft"
+        ){
 
-return url.href;
+          document.getElementById(
+            "slidePrev"
+          ).click();
 
-}
+        }
 
-}
-catch(error){}
+        if(
+          event.key ===
+          "ArrowRight"
+        ){
 
-return "";
+          document.getElementById(
+            "slideNext"
+          ).click();
 
-}
+        }
 
+      }
+    );
 
-function musicPrefix(
-index
-){
 
-return `music/mes-${index+1}`;
+    /* =========================================================
+       UTILIDADES
+       ========================================================= */
 
-}
+    function sanitizeFileName(name){
 
+      return name
+        .normalize("NFD")
+        .replace(
+          /[\u0300-\u036f]/g,
+          ""
+        )
+        .replace(
+          /[^a-zA-Z0-9._-]/g,
+          "-"
+        )
+        .replace(
+          /-+/g,
+          "-"
+        )
+        .replace(
+          /^-+|-+$/g,
+          ""
+        )
+        .slice(
+          0,
+          120
+        ) ||
+        "foto";
 
-async function getSharedMusic(
-index
-){
+    }
 
-const prefix =
-musicPrefix(index);
 
-const data =
-await listStorage(
-prefix
-);
+    function escapeHtml(value){
 
-const files =
-(data||[])
-.filter(
-file =>
-file.name &&
-/\.json$/i.test(
-file.name
-)
-)
-.sort(
-(a,b)=>
-b.name.localeCompare(
-a.name
-)
-);
+      return String(value)
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
+    }
 
-if(
-!files.length
-){
 
-return "";
+    /* =========================================================
+       ESTADO DE CONEXIÓN
+       ========================================================= */
 
-}
+    async function testConnection(){
 
+      const text =
+        document.getElementById(
+          "syncText"
+        );
 
-const url =
-publicStorageUrl(
-`${prefix}/${files[0].name}`
-)
-+
-`?t=${Date.now()}`;
+      try{
 
+        await listStorage("");
 
-const response =
-await fetch(
-url,
-{
-cache:"no-store"
-}
-);
+        text.textContent =
+          "Sincronizado";
 
+      }catch(error){
 
-if(!response.ok){
+        console.error(
+          "Supabase:",
+          error
+        );
 
-throw new Error(
-"No se pudo leer el enlace de YouTube guardado."
-);
+        text.textContent =
+          "Sin conexión";
 
-}
+      }
 
+    }
 
-const saved =
-await response.json();
+    testConnection();
 
-
-return normalizeYouTubeUrl(
-saved.url ||
-""
-);
-
-}
-
-
-async function saveSharedMusic(
-index,
-url
-){
-
-const prefix =
-musicPrefix(index);
-
-const path =
-`${prefix}/link-${Date.now()}-${Math.random().toString(36).slice(2,7)}.json`;
-
-const body =
-new Blob(
-[
-JSON.stringify(
-{
-url,
-updatedAt:
-new Date().toISOString()
-}
-)
-],
-{
-type:"application/json"
-}
-);
-
-await uploadStorage(
-path,
-body,
-"application/json"
-);
-
-}
-
-
-async function renderMusic(
-index
-){
-
-try{
-
-const url =
-await getSharedMusic(
-index
-);
-
-youtubeInput.value =
-url;
-
-
-if(url){
-
-musicSaved.textContent =
-"✓ Enlace compartido guardado para ambos teléfonos.";
-
-youtubeLink.href =
-url;
-
-youtubeLink.style.display =
-"inline-flex";
-
-}
-else{
-
-musicSaved.textContent =
-"";
-
-youtubeLink.style.display =
-"none";
-
-}
-
-}
-catch(error){
-
-console.error(
-error
-);
-
-musicSaved.textContent =
-"No se pudo cargar la música compartida.";
-
-youtubeLink.style.display =
-"none";
-
-}
-
-}
-
-
-youtubeInput.addEventListener(
-"input",
-()=>{
-
-if(
-selectedMonth===null
-){
-
-return;
-
-}
-
-clearTimeout(
-musicSaveTimer
-);
-
-
-const value =
-youtubeInput.value.trim();
-
-
-if(!value){
-
-musicSaved.textContent =
-"";
-
-youtubeLink.style.display =
-"none";
-
-musicSaveTimer =
-setTimeout(
-()=>saveMusicValue(
-selectedMonth,
-""
-),
-800
-);
-
-return;
-
-}
-
-
-const valid =
-normalizeYouTubeUrl(
-value
-);
-
-
-if(!valid){
-
-musicSaved.textContent =
-"Pega un enlace válido de YouTube.";
-
-youtubeLink.style.display =
-"none";
-
-return;
-
-}
-
-
-youtubeLink.href =
-valid;
-
-youtubeLink.style.display =
-"inline-flex";
-
-musicSaved.textContent =
-"Guardando…";
-
-
-musicSaveTimer =
-setTimeout(
-()=>saveMusicValue(
-selectedMonth,
-valid
-),
-800
-);
-
-}
-);
-
-
-async function saveMusicValue(
-index,
-url
-){
-
-try{
-
-await saveSharedMusic(
-index,
-url
-);
-
-musicSaved.textContent =
-url
-?
-"✓ Enlace guardado y compartido para ambos teléfonos."
-:
-"✓ Música actualizada.";
-
-}
-catch(error){
-
-console.error(
-error
-);
-
-musicSaved.textContent =
-"No se pudo guardar el enlace: "+
-(
-error?.message ||
-"error de Supabase"
-);
-
-}
-
-}
-
-
-/* =========================================================
-   PRESENTACIÓN DE FOTOS
-   ========================================================= */
-
-function updateSlide(){
-
-if(
-!slideshowImages.length
-){
-
-return;
-
-}
-
-
-slideImage.style.animation =
-"none";
-
-void slideImage.offsetWidth;
-
-slideImage.style.animation =
-"slideIn .3s ease both";
-
-slideImage.src =
-slideshowImages[
-slideshowIndex
-];
-
-slideCounter.textContent =
-`${slideshowIndex+1} / ${slideshowImages.length}`;
-
-}
-
-
-function openSlideshow(
-index=0
-){
-
-if(
-!slideshowImages.length
-){
-
-return;
-
-}
-
-slideshowIndex =
-index;
-
-updateSlide();
-
-slideshowModal.classList.add(
-"active"
-);
-
-slideshowModal.setAttribute(
-"aria-hidden",
-"false"
-);
-
-document.body.style.overflow =
-"hidden";
-
-}
-
-
-function closeSlideShow(){
-
-slideshowModal.classList.remove(
-"active"
-);
-
-slideshowModal.setAttribute(
-"aria-hidden",
-"true"
-);
-
-document.body.style.overflow =
-"";
-
-}
-
-
-function nextPhoto(){
-
-if(
-!slideshowImages.length
-){
-
-return;
-
-}
-
-slideshowIndex =
-(
-slideshowIndex+1
-)
-%
-slideshowImages.length;
-
-updateSlide();
-
-}
-
-
-function previousPhoto(){
-
-if(
-!slideshowImages.length
-){
-
-return;
-
-}
-
-slideshowIndex =
-(
-slideshowIndex-1+
-slideshowImages.length
-)
-%
-slideshowImages.length;
-
-updateSlide();
-
-}
-
-
-slideshowBtn.onclick =
-()=>openSlideshow(0);
-
-closeSlideshow.onclick =
-closeSlideShow;
-
-nextSlide.onclick =
-nextPhoto;
-
-prevSlide.onclick =
-previousPhoto;
-
-
-slideshowModal.addEventListener(
-"click",
-event=>{
-
-if(
-event.target===
-slideshowModal
-){
-
-closeSlideShow();
-
-}
-
-}
-);
-
-
-document.addEventListener(
-"keydown",
-event=>{
-
-if(
-!slideshowModal.classList.contains(
-"active"
-)
-){
-
-return;
-
-}
-
-if(
-event.key==="Escape"
-){
-
-closeSlideShow();
-
-}
-
-if(
-event.key==="ArrowRight"
-){
-
-nextPhoto();
-
-}
-
-if(
-event.key==="ArrowLeft"
-){
-
-previousPhoto();
-
-}
-
-}
-);
-
-</script>
+  </script>
 
 </body>
-  </html>
+</html>
